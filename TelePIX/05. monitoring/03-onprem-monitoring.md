@@ -1,0 +1,94 @@
+---
+title: Grafana Alloy로 온프렘 서버 모니터링 구축
+date: 2026-06-17
+tags: [monitoring, onprem, grafana, alloy, node-exporter]
+status: done
+---
+
+## 배경
+
+온프렘 서버 여러 대(Docker 컨테이너 운영 서버, 보안 모니터링 서버, 이미지 처리 서버 등)는 AWS 리소스와 달리 CloudWatch로 묶어서 볼 수 없어 상태 확인이 각 서버 SSH 접속에 의존하는 구조
+AWS 인프라는 이미 Grafana로 통합했던 터라, 온프렘 서버도 같은 대시보드 체계에 편입하고자 함
+
+## 접근
+
+중앙 collector를 따로 두지 않고, 각 서버에 Grafana Alloy를 로컬 설치해서 자기 자신만 Node Exporter로 scrape하고 Grafana Cloud Mimir로 remote_write하는 구조로 결정
+서버 대수가 많지 않은 상황에서 중앙 집중형 collector를 별도로 운영하는 비용이 더 크다고 판단
+대시보드는 Grafana 공식 Node Exporter Full(대시보드 ID 1860)을 가져다 쓰려고 했으나, 이 대시보드의 서버 구분 변수가 `nodename`(hostname join) 기반이라 이 환경에 부적합해 커스텀으로 새로 제작
+
+## 구현
+
+### 아키텍처
+
+```
+Node Exporter (:9100, 각 서버)
+↓ scrape (localhost only)
+Grafana Alloy (각 서버 로컬 설치)
+↓ remote_write
+Grafana Cloud Mimir → Grafana Dashboard + Alerting → Slack
+```
+
+### alias 레이블 직접 부여
+
+서버 구분을 위해 `instance` 레이블을 쓰면 모든 서버가 `localhost:9100`으로 동일해서 구분 불가
+`nodename`(hostname 기반 join)도 시도했지만 서버마다 hostname 정책이 제각각이고 scrape 타이밍에 따라 race condition이 생길 수 있어 포기
+최종적으로는 scrape target 설정 시점에 `alias` 레이블을 서버별로 직접 명시하고, 모든 PromQL 쿼리에서 `alias="$alias"`로 필터링하는 방식으로 정리
+
+```hcl
+prometheus.scrape "node_exporter" {
+  targets = [
+    {
+      "__address__" = "localhost:9100",
+      "job"         = "node",
+      "alias"       = "docker-host-1",  # 서버별 고유값
+    },
+  ]
+  forward_to = [prometheus.remote_write.metrics_service.receiver]
+}
+```
+
+Grafana 대시보드 변수는 이름을 반드시 소문자 `alias`로 만들어야 함 — 대문자로 만들면 `$alias` 치환이 안 되는 것으로 확인
+
+### Access Policy와 systemd 설정
+
+- **문제** — Alloy 설치 스크립트가 자동 생성하는 Access Policy는 권한이 비어있는 경우가 있어 401 Unauthorized 발생
+- **해결** — `metrics:write`, `logs:write` 권한을 가진 Access Policy를 수동으로 새로 생성, Fleet Management 권한이 필요한 `remotecfg` 블록은 미사용 처리로 config에서 제거
+
+Ubuntu와 Rocky Linux는 systemd 설정 경로가 달라서 서버 OS별로 나눠 기록
+
+- **Ubuntu** — `/usr/lib/systemd/system/alloy.service`의 User를 기본값 `alloy`에서 `grafana` 유저로 수동 변경 필요, 환경변수 파일 `/etc/systemd/system/alloy.service.d/env.conf`
+- **Rocky Linux** — 환경변수 파일 `/etc/sysconfig/alloy`
+
+### 알림 임계치와 flapping 방지
+
+| 항목 | Warning | Critical |
+|---|---|---|
+| CPU | 80% | 90% |
+| Memory | 85% | 95% |
+| Disk | 80% | 90% |
+| Swap | 50% | 80% |
+
+Disk Usage Alert가 수 분 간격으로 반복 발화하는 flapping 문제 발생
+원인은 Alert Type을 `Instant`로 잡고 `Keep firing for`를 미설정한 데 있었음
+
+- Type → `Range`
+- Reduce Function → `Mean`
+- Alert state if no data → `Normal`
+- Keep firing for → `5m`
+
+Contact Point Body Text도 FIRING 알람이 2개 이상 동시 발생하면 `{{ .CommonAnnotations.description }}`이 빈 값으로 렌더링되는 Grafana 특성이 있어, `{{ range .Alerts }}...{{ end }}` 방식으로 각 알람을 순회하도록 변경
+
+## 결과
+
+- 온프렘 서버 4대(Docker 컨테이너 운영 서버, 보안 모니터링 서버, 이미지 처리 서버, 구성 중인 서버 1대)를 Grafana 대시보드로 통합
+- CPU/Memory/Disk/Swap/Network 지표를 서버별로 구분해서 조회 가능
+- Disk Alert flapping 문제 해결 후 재발 없음
+
+## 회고
+
+공식 대시보드(1860)를 그대로 쓰지 못하고 커스텀으로 다시 짠 게 처음엔 손해처럼 느껴졌으나, 결과적으로 `alias` 레이블 기반 구조를 온전히 이해하게 되어 이후 서버 추가나 쿼리 디버깅이 오히려 수월
+Alert flapping 원인이 Type/Reduce Function 설정 하나였다는 걸 알아내기까지 시간이 꽤 소요, "알람이 반복 발화하면 Range+Mean+Keep firing for 조합부터 의심한다"는 체크리스트를 확보한 게 소득
+신규 서버(구성 중인 서버 1대)는 아직 Alloy 구성이 완료되지 않아 다음 작업으로 남음
+
+## 관련 문서
+- [[01-overview-grafana-monitoring-stack]]

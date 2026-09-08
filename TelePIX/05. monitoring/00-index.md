@@ -1,0 +1,22 @@
+---
+title: 05. monitoring 인덱스
+date: 2026-08-27
+tags: [index, moc, monitoring, grafana]
+status: active
+---
+Grafana Cloud 기반 통합 모니터링 스택 구축 시리즈
+전체 개요를 먼저 보고, 이후 영역별 구축기와 확장 기능 순으로 읽으면 흐름 연결
+
+| 순서 | 문서 | 내용 |
+|---|---|---|
+| 1 | [[01-overview-grafana-monitoring-stack]] | 전체 개요 — 왜 Grafana Cloud로 통합했고 Cross-Account IAM 인증을 어떻게 풀었는지 (기반 문서) |
+| 2 | [[02-aws-cost-monitoring]] | CUR 2.0 + Athena로 AWS 비용을 서비스별/리소스별로 쪼개보기 (Glue Table 자동생성 함정, Athena 인용규칙 포함) |
+| 3 | [[03-onprem-monitoring]] | Grafana Alloy + Node Exporter로 온프렘 서버 4대 통합 |
+| 4 | [[04-ecs-log-monitoring]] | ECS 서비스 로그를 Loki로 실시간 수집 |
+| 5 | [[05-satchat-alert-integration]] | 핵심 서비스 CloudWatch 대시보드 + SLO 기반 Alert 설계 |
+| 6 | [[06-grafana-alert-ai-slack-openai]] | (05 확장) Grafana Alert에 OpenAI 조치 가이드 자동 응답 붙이기 |
+| 7 | [[07-daily-monthly-report-automation]] | Lambda + EventBridge로 인프라 현황 데일리/먼슬리 리포트 자동 전송 |
+
+## 관련 문서
+- [[jtkdy/TelePIX/00-index|jtkdy 전체 인덱스]]
+- [[jtkdy/TelePIX/04. 개발자 포탈/00-index|04. 개발자 포탈 인덱스]] (06번 장애 관리 자동화가 이 알림 체계를 참조)
