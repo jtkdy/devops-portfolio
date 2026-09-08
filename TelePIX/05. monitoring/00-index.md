@@ -16,6 +16,7 @@ Grafana Cloud 기반 통합 모니터링 스택 구축 시리즈
 | 5 | [[05-satchat-alert-integration]] | 핵심 서비스 CloudWatch 대시보드 + SLO 기반 Alert 설계 |
 | 6 | [[06-grafana-alert-ai-slack-openai]] | (05 확장) Grafana Alert에 OpenAI 조치 가이드 자동 응답 붙이기 |
 | 7 | [[07-daily-monthly-report-automation]] | Lambda + EventBridge로 인프라 현황 데일리/먼슬리 리포트 자동 전송 |
+| 8 | [[08-Sentry 애플리케이션 에러 모니터링 Slack 연동]] | Sentry로 애플리케이션 에러 트래킹, satchat/Keycloak 서비스별 Slack 알림 채널 분리 |
 
 ## 관련 문서
 - [[jtkdy/TelePIX/00-index|jtkdy 전체 인덱스]]
