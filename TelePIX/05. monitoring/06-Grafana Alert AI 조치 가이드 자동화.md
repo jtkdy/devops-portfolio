@@ -91,5 +91,5 @@ Slack 스코프 변경 후 Reinstall이 필요하다는 걸 몰라서 한동안 
 다음 단계로는 버튼 클릭 시에만 AI를 호출하는 방식(현재는 알람 발생 시 무조건 호출)과 Slack Signing Secret 검증 추가를 계획 중
 
 ## 관련 문서
-- [[05-satchat-alert-integration]]
-- [[01-overview-grafana-monitoring-stack]]
+- [[05-핵심 서비스 CloudWatch-Grafana Alert 설계]]
+- [[01-Grafana 통합 모니터링 스택 구축]]

@@ -16,8 +16,8 @@ status: active
 
 GPU 서비스는 아래 두 모니터링 구축 작업에도 포함되어 있지만, 이 문서들 자체는 GPU 전용이 아니라 여러 서비스를 함께 다루는 더 큰 범위의 작업임
 
-- [[04-ecs-log-monitoring]] — ECS 로그 Loki 수집 작업에 GPU 서비스 로그 그룹도 포함됨
-- [[05-satchat-alert-integration]] — GPU 클러스터 Container Insights는 아직 미구현 항목으로 남아있음
+- [[04-ECS 로그 Grafana Loki 수집]] — ECS 로그 Loki 수집 작업에 GPU 서비스 로그 그룹도 포함됨
+- [[05-핵심 서비스 CloudWatch-Grafana Alert 설계]] — GPU 클러스터 Container Insights는 아직 미구현 항목으로 남아있음
 
 ## 프로젝트 요약
 

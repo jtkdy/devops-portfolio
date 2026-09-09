@@ -62,5 +62,5 @@ S3 데이터 이벤트 로깅이 없어 어떤 파일이 나갔는지 특정 불
 
 ## 관련 문서
 - [[jtkdy/TelePIX/03. incidents/00-index|03. incidents 인덱스]]
-- [[07-daily-monthly-report-automation|데일리/먼슬리 리포트 자동화]] (GuardDuty 알림을 탐지한 리포트 체계)
+- [[07-인프라 데일리-먼슬리 리포트 자동화|데일리/먼슬리 리포트 자동화]] (GuardDuty 알림을 탐지한 리포트 체계)
 - [[IAM 액세스키 탈취 사고 대응과 CSPM 도입|프로젝트 전체 타임라인]]

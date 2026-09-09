@@ -7,7 +7,7 @@ status: draft
 ## 배경
 
 애플리케이션 레벨 에러를 파악하는 속도가 느려, 장애 발생 후 원인 파악까지 지연되는 문제 있음
-기존 모니터링 스택([[01-overview-grafana-monitoring-stack|Grafana 기반 통합 모니터링]])은 인프라 지표 중심이라 애플리케이션 에러 자체를 추적하기엔 한계
+기존 모니터링 스택([[01-Grafana 통합 모니터링 스택 구축|Grafana 기반 통합 모니터링]])은 인프라 지표 중심이라 애플리케이션 에러 자체를 추적하기엔 한계
 
 ## 접근
 
@@ -30,4 +30,4 @@ Sentry 도입해 애플리케이션 에러 트래킹, Slack 연동으로 실시�
 
 ## 관련 문서
 - [[00-index|05. monitoring 인덱스]]
-- [[01-overview-grafana-monitoring-stack]]
+- [[01-Grafana 통합 모니터링 스택 구축]]

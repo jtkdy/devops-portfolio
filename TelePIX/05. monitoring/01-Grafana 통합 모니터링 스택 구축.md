@@ -59,7 +59,7 @@ SaaS 제공자 쪽 내부 자격증명이 바뀔 수 있다는 전제를 깔고,
 External ID는 보안상 더 안전한 선택지인데 이번 환경에서는 적용하지 못한 점이 아쉬움, 추후 재검증 예정
 
 ## 관련 문서
-- [[02-aws-cost-monitoring]]
-- [[03-onprem-monitoring]]
-- [[05-satchat-alert-integration]]
-- [[06-grafana-alert-ai-slack-openai]]
+- [[02-AWS 비용 모니터링 구축]]
+- [[03-온프렘 서버 모니터링 구축]]
+- [[05-핵심 서비스 CloudWatch-Grafana Alert 설계]]
+- [[06-Grafana Alert AI 조치 가이드 자동화]]

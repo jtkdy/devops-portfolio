@@ -70,7 +70,7 @@ RDS/Redis/ACM Alert Rule은 Description 템플릿까지는 확정, Rule 생성�
 ### IAM AssumeRole 반복 실패 트러블슈팅
 
 - **문제** — Grafana → AWS CloudWatch 연동 도중 `AccessDenied: sts:AssumeRole` 에러가 반복 발생
-- **원인** — Grafana Cloud가 내부적으로 쓰는 IAM User가 주기적으로 로테이션되는데, Trust Policy에 특정 User ARN을 고정해뒀던 것 (상세 원인 분석은 [[01-overview-grafana-monitoring-stack]] 참고)
+- **원인** — Grafana Cloud가 내부적으로 쓰는 IAM User가 주기적으로 로테이션되는데, Trust Policy에 특정 User ARN을 고정해뒀던 것 (상세 원인 분석은 [[01-Grafana 통합 모니터링 스택 구축]] 참고)
 - **해결** — Trust Policy Principal을 개별 User 대신 Grafana Cloud AWS 계정의 `root`로 변경
 
 재발 시 점검 순서는 4단계로 정리
@@ -99,7 +99,7 @@ RDS/Redis/ACM Alert Rule은 Description 템플릿까지는 확정, Rule 생성�
 다음 스프린트에서 이 순서대로 진행 예정
 
 ## 관련 문서
-- [[01-overview-grafana-monitoring-stack]]
-- [[06-grafana-alert-ai-slack-openai]]
-- [[04-ecs-log-monitoring]]
+- [[01-Grafana 통합 모니터링 스택 구축]]
+- [[06-Grafana Alert AI 조치 가이드 자동화]]
+- [[04-ECS 로그 Grafana Loki 수집]]
 - [[02-GPU 딥러닝 모델 서빙 ECS 이관|GPU 딥러닝 서빙 ECS 이관 (GPU Container Insights 미구현 항목의 출처)]]

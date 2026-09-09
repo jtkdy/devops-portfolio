@@ -97,6 +97,6 @@ Subscription Filter가 소급 적용되지 않는다는 제약을 미리 몰랐�
 아직 90일 이후 장기 보관(Kinesis Firehose → S3)과 ERROR/WARN Grafana Alert 연동은 미완, 다음 우선순위로 남음
 
 ## 관련 문서
-- [[01-overview-grafana-monitoring-stack]]
-- [[05-satchat-alert-integration]]
+- [[01-Grafana 통합 모니터링 스택 구축]]
+- [[05-핵심 서비스 CloudWatch-Grafana Alert 설계]]
 - [[02-GPU 딥러닝 모델 서빙 ECS 이관|GPU 딥러닝 서빙 ECS 이관 (이 로그 그룹들이 편입된 이관 작업)]]
