@@ -101,10 +101,10 @@ S3로 분리하면 가중치 버전 관리도 이미지와 독립적으로 가�
 
 ### 모니터링을 이관 계획에 내장시킨 지점
 
-이 CloudWatch 로그 그룹들은 이후 [[04-ecs-log-monitoring|ECS 로그를 Loki로 실시간 수집하는 작업]]에서 GPU 서비스군으로 그대로 편입
+이 CloudWatch 로그 그룹들은 이후 [[04-ECS 로그 Grafana Loki 수집|ECS 로그를 Loki로 실시간 수집하는 작업]]에서 GPU 서비스군으로 그대로 편입
 이관 단계에서 로그 그룹 이름과 구조를 미리 잡아둔 덕분에, 로그 모니터링 구축 시 별도 작업 없이 바로 Subscription Filter 적용 가능
 
-GPU 사용률/VRAM 대시보드와 OOM Alert는 [[05-satchat-alert-integration|핵심 서비스 CloudWatch 대시보드]] 쪽 작업과 이어지는데, 해당 문서에는 "GPU 클러스터 Container Insights 활성화 여부 결정 필요"가 미구현 항목으로 남음
+GPU 사용률/VRAM 대시보드와 OOM Alert는 [[05-핵심 서비스 CloudWatch-Grafana Alert 설계|핵심 서비스 CloudWatch 대시보드]] 쪽 작업과 이어지는데, 해당 문서에는 "GPU 클러스터 Container Insights 활성화 여부 결정 필요"가 미구현 항목으로 남음
 즉 이관 계획에서 의도한 Grafana 검증 체계가 아직 완전히 붙지 않은 상태로, 이 이관 작업의 다음 단계로 이어짐
 
 ## 결과
@@ -136,7 +136,7 @@ GPU 사용률/VRAM 대시보드와 OOM Alert는 [[05-satchat-alert-integration|�
 ## 관련 문서
 - [[jtkdy/TelePIX/01. infra/00-index|01. infra 인덱스]]
 - [[GPU 딥러닝 서빙 마이그레이션|프로젝트 전체 타임라인]]
-- [[04-ecs-log-monitoring|ECS 로그 모니터링 (GPU 로그 그룹 편입)]]
-- [[05-satchat-alert-integration|핵심 서비스 대시보드/Alert (GPU Container Insights 미구현 항목)]]
+- [[04-ECS 로그 Grafana Loki 수집|ECS 로그 모니터링 (GPU 로그 그룹 편입)]]
+- [[05-핵심 서비스 CloudWatch-Grafana Alert 설계|핵심 서비스 대시보드/Alert (GPU Container Insights 미구현 항목)]]
 - [[03-ALB 타겟그룹 Terraform 편입|ALB/타겟그룹 Terraform 편입 (후속 작업)]]
 - [[satchat-gpu CloudFormation 이중소유 정리 사고|CloudFormation 이중소유 정리 사고 (후속 작업 중 발생)]]

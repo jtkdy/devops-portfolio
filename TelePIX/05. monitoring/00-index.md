@@ -9,13 +9,13 @@ Grafana Cloud 기반 통합 모니터링 스택 구축 시리즈
 
 | 순서 | 문서 | 내용 |
 |---|---|---|
-| 1 | [[01-overview-grafana-monitoring-stack]] | 전체 개요 — 왜 Grafana Cloud로 통합했고 Cross-Account IAM 인증을 어떻게 풀었는지 (기반 문서) |
-| 2 | [[02-aws-cost-monitoring]] | CUR 2.0 + Athena로 AWS 비용을 서비스별/리소스별로 쪼개보기 (Glue Table 자동생성 함정, Athena 인용규칙 포함) |
-| 3 | [[03-onprem-monitoring]] | Grafana Alloy + Node Exporter로 온프렘 서버 4대 통합 |
-| 4 | [[04-ecs-log-monitoring]] | ECS 서비스 로그를 Loki로 실시간 수집 |
-| 5 | [[05-satchat-alert-integration]] | 핵심 서비스 CloudWatch 대시보드 + SLO 기반 Alert 설계 |
-| 6 | [[06-grafana-alert-ai-slack-openai]] | (05 확장) Grafana Alert에 OpenAI 조치 가이드 자동 응답 붙이기 |
-| 7 | [[07-daily-monthly-report-automation]] | Lambda + EventBridge로 인프라 현황 데일리/먼슬리 리포트 자동 전송 |
+| 1 | [[01-Grafana 통합 모니터링 스택 구축]] | 전체 개요 — 왜 Grafana Cloud로 통합했고 Cross-Account IAM 인증을 어떻게 풀었는지 (기반 문서) |
+| 2 | [[02-AWS 비용 모니터링 구축]] | CUR 2.0 + Athena로 AWS 비용을 서비스별/리소스별로 쪼개보기 (Glue Table 자동생성 함정, Athena 인용규칙 포함) |
+| 3 | [[03-온프렘 서버 모니터링 구축]] | Grafana Alloy + Node Exporter로 온프렘 서버 4대 통합 |
+| 4 | [[04-ECS 로그 Grafana Loki 수집]] | ECS 서비스 로그를 Loki로 실시간 수집 |
+| 5 | [[05-핵심 서비스 CloudWatch-Grafana Alert 설계]] | 핵심 서비스 CloudWatch 대시보드 + SLO 기반 Alert 설계 |
+| 6 | [[06-Grafana Alert AI 조치 가이드 자동화]] | (05 확장) Grafana Alert에 OpenAI 조치 가이드 자동 응답 붙이기 |
+| 7 | [[07-인프라 데일리-먼슬리 리포트 자동화]] | Lambda + EventBridge로 인프라 현황 데일리/먼슬리 리포트 자동 전송 |
 | 8 | [[08-Sentry 애플리케이션 에러 모니터링 Slack 연동]] | Sentry로 애플리케이션 에러 트래킹, satchat/Keycloak 서비스별 Slack 알림 채널 분리 |
 
 ## 관련 문서

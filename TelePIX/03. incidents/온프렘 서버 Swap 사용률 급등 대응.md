@@ -97,4 +97,4 @@ Nexus가 `-Xmx2703m`을 자동 계산값으로 잡은 것도 의도한 설정이
 
 ## 관련 문서
 - [[jtkdy/TelePIX/03. incidents/00-index|03. incidents 인덱스]]
-- [[03-onprem-monitoring|온프렘 서버 모니터링]] (Swap 임계치 Alert로 이 사고를 탐지한 체계)
+- [[03-온프렘 서버 모니터링 구축|온프렘 서버 모니터링]] (Swap 임계치 Alert로 이 사고를 탐지한 체계)

@@ -12,7 +12,7 @@ Wazuh 이벤트를 CloudWatch Logs로 푸시하고, Lambda로 집계해서 매�
 
 ## 접근
 
-Wazuh 자체 email alert 기능도 있지만, 이미 [[07-daily-monthly-report-automation|CloudTrail/GuardDuty 이벤트를 Lambda로 집계해서 Slack에 보내는 구조]] 존재
+Wazuh 자체 email alert 기능도 있지만, 이미 [[07-인프라 데일리-먼슬리 리포트 자동화|CloudTrail/GuardDuty 이벤트를 Lambda로 집계해서 Slack에 보내는 구조]] 존재
 Wazuh 이벤트도 같은 파이프라인에 녹여 넣는 게 관리 포인트를 줄이는 방향으로 판단
 
 Wazuh → CloudWatch 푸시는 [[01-온프렘 PKI 기반 IAM Roles Anywhere 구축|CA 발급 관리 계정]]이 전담
@@ -102,5 +102,5 @@ S3 데이터 이벤트 로깅이 아직 없어 파일 레벨 접근 추적 불�
 - [[02-FIM 노이즈 제거]]
 - [[03-커스텀 룰 관리]]
 - [[01-온프렘 PKI 기반 IAM Roles Anywhere 구축]]
-- [[07-daily-monthly-report-automation]]
+- [[07-인프라 데일리-먼슬리 리포트 자동화]]
 - [[온프렘 보안 모니터링 스택 구축|프로젝트 전체 타임라인]]
