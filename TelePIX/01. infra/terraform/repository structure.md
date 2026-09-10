@@ -21,7 +21,7 @@ telepix-terraform/
 ├── docs/          # Wiki 문서 (Obsidian)
 ├── infra/         # 공유 기반 인프라 (VPC, ECS 클러스터, ALB, RDS 등)
 ├── internal/      # 내부 서버 (개발자 포탈 등)
-├── project/       # 프로젝트별 ECS 서비스 (satchat, satchat/gpu, mps, sso)
+├── project/       # 프로젝트별 ECS 서비스 (coreservice, coreservice/gpu, mps, sso)
 ├── scripts/       # Terraform plan/apply 자동화 셸 스크립트
 └── bitbucket-pipelines.yml  # CI/CD 파이프라인
 ```
@@ -56,7 +56,7 @@ aws/
 
 Terraform workspace: `infra/aws`
 
-VPC, IGW, NAT/bastion, 서브넷, 공용 ALB, ECS 클러스터(satchat/product/mps/satchat_gpu), RDS, ElastiCache, ECR, KMS, ASG, IAM 기반 역할 등 모든 프로젝트가 공유하는 리소스. 레거시 `src/t_base`, `src/t_common` 등에서 이관된 리소스도 모두 이 workspace에 통합되어 있다.
+VPC, IGW, NAT/bastion, 서브넷, 공용 ALB, ECS 클러스터(coreservice/product/mps/coreservice_gpu), RDS, ElastiCache, ECR, KMS, ASG, IAM 기반 역할 등 모든 프로젝트가 공유하는 리소스. 레거시 `src/t_base`, `src/t_common` 등에서 이관된 리소스도 모두 이 workspace에 통합되어 있다.
 
 | 파일 | 주요 리소스 |
 |------|------------|
@@ -64,19 +64,19 @@ VPC, IGW, NAT/bastion, 서브넷, 공용 ALB, ECS 클러스터(satchat/product/m
 | `route_table.tf` | 퍼블릭/프라이빗 라우트 테이블, 라우트 |
 | `ec2.tf` | NAT 인스턴스, Bastion 인스턴스 |
 | `security_group.tf` | 공용 SG (RDS/NAT/bastion/ElastiCache 포함) |
-| `load_balancer.tf` | 공용 ALB (satchat-ai-alb 포함) |
+| `load_balancer.tf` | 공용 ALB (coreservice-ai-alb 포함) |
 | `lb_listener.tf` | ALB Listener (HTTP/HTTPS) |
 | `lb_listener_rule.tf` | Listener Rule |
 | `target_group.tf` | Target Group |
-| `asg.tf` | Auto Scaling Group (satchat_gpu 포함) |
+| `asg.tf` | Auto Scaling Group (coreservice_gpu 포함) |
 | `launch_template.tf` | EC2 Launch Template |
 | `capacity_provider.tf` | ECS Capacity Provider |
-| `ecs.tf` | ECS 클러스터 (`satchat_cluster`, `product_cluster`, `mps_cluster`, `satchat_gpu_cluster`) |
+| `ecs.tf` | ECS 클러스터 (`coreservice_cluster`, `product_cluster`, `mps_cluster`, `coreservice_gpu_cluster`) |
 | `cloudwatch_alarm.tf` | GPU ASG 스케일링 알람 |
 | `rds.tf` | RDS 인스턴스, 파라미터/서브넷 그룹 |
 | `kms.tf` | RDS 암호화용 KMS 키 |
 | `elasticache.tf` | ElastiCache 클러스터, 서브넷 그룹, 로그 그룹 |
-| `ecr.tf` | ECR 리포지토리 (satchat, payment) |
+| `ecr.tf` | ECR 리포지토리 (coreservice, payment) |
 | `s3.tf` | Terraform env 변수용 S3 버킷 |
 | `iam.tf` | 공용 IAM 역할/정책 |
 | `data.tf` | Data source (AMI, AZ 등) |
@@ -125,11 +125,11 @@ Terraform workspace: `internal/groundctrl`
 
 각 프로젝트는 `shared` (IAM 역할/정책)와 `product` (실제 ECS 리소스)로 분리.
 
-### `project/satchat/`
+### `project/coreservice/`
 
 위성 영상 기반 AI 챗봇 서비스. 도메인: `*.telepix.ai`
 
-**`satchat/shared/`** — IAM 공유 리소스
+**`coreservice/shared/`** — IAM 공유 리소스
 
 | 파일 | 내용 |
 |------|------|
@@ -137,21 +137,21 @@ Terraform workspace: `internal/groundctrl`
 | `iam_policy.tf` | 커스텀 IAM 정책 |
 | `iam_role_restriction.tf` | 역할 제한 설정 |
 
-**`satchat/product/`** — 일반 ECS 서비스 (Fargate 기반, on-demand)
+**`coreservice/product/`** — 일반 ECS 서비스 (Fargate 기반, on-demand)
 
-Terraform workspace: `project/satchat/product`
+Terraform workspace: `project/coreservice/product`
 
 서비스별로 `_<서비스명>.tf` 패턴으로 분리:
 
 | 파일 | 서비스 | 서브도메인 |
 |------|--------|-----------|
-| `_backend.tf` | Backend API | `satchat-api.telepix.ai` |
-| `_front_client.tf` | 클라이언트 프론트엔드 | `satchat.telepix.ai` |
-| `_front_admin.tf` | 어드민 프론트엔드 | `satchat-admin.telepix.ai` |
-| `_llm.tf` | LLM 서비스 | `satchat-llm.telepix.ai` |
-| `_processing.tf` | 처리 서비스 | `satchat-processing.telepix.ai` |
-| `_exchange.tf` | 데이터 교환 | `satchat-snp.telepix.ai` |
-| `_tile.tf` | 타일 서비스 | `satchat-tile.telepix.ai` |
+| `_backend.tf` | Backend API | `coreservice-api.telepix.ai` |
+| `_front_client.tf` | 클라이언트 프론트엔드 | `coreservice.telepix.ai` |
+| `_front_admin.tf` | 어드민 프론트엔드 | `coreservice-admin.telepix.ai` |
+| `_llm.tf` | LLM 서비스 | `coreservice-llm.telepix.ai` |
+| `_processing.tf` | 처리 서비스 | `coreservice-processing.telepix.ai` |
+| `_exchange.tf` | 데이터 교환 | `coreservice-snp.telepix.ai` |
+| `_tile.tf` | 타일 서비스 | `coreservice-tile.telepix.ai` |
 
 공통 파일:
 
@@ -164,11 +164,11 @@ Terraform workspace: `project/satchat/product`
 | `s3.tf` | S3 버킷 |
 | `local.tf` | 컨테이너 설정, 도메인 맵 |
 
-**`satchat/gpu/`** — GPU 기반 AI 추론 서비스 (EC2 launch type)
+**`coreservice/gpu/`** — GPU 기반 AI 추론 서비스 (EC2 launch type)
 
-Terraform workspace: `project/satchat/gpu`
+Terraform workspace: `project/coreservice/gpu`
 
-`infra/aws`의 `satchat_gpu_cluster`(EC2 ASG + capacity provider) 위에서 동작하는 GPU 서비스 3종(`object_detection`, `mangrove`, `change_detection`). Task definition은 CI/CD가 별도 등록(data source로 참조), `desired_count`는 lifecycle에서 무시.
+`infra/aws`의 `coreservice_gpu_cluster`(EC2 ASG + capacity provider) 위에서 동작하는 GPU 서비스 3종(`object_detection`, `mangrove`, `change_detection`). Task definition은 CI/CD가 별도 등록(data source로 참조), `desired_count`는 lifecycle에서 무시.
 
 | 파일 | 내용 |
 |------|------|
@@ -184,7 +184,7 @@ Terraform workspace: `project/satchat/gpu`
 
 MPS(Media Processing Service) 서비스.
 
-**`mps/shared/`** — IAM 공유 리소스 (satchat/shared와 동일 패턴)
+**`mps/shared/`** — IAM 공유 리소스 (coreservice/shared와 동일 패턴)
 
 **`mps/product/`** — ECS 서비스
 
@@ -244,10 +244,10 @@ State 관리·IAM 등 다른 모든 workspace가 의존하는 최초 리소스�
 
 ```
 ┌─────────────────────────────────────────┐
-│  project/{satchat,satchat/gpu,mps,sso}  │  ← 서비스 ECS 리소스
+│  project/{coreservice,coreservice/gpu,mps,sso}  │  ← 서비스 ECS 리소스
 │  /product                                │
 ├─────────────────────────────────────────┤
-│  project/{satchat,mps,sso}/shared       │  ← 서비스 IAM
+│  project/{coreservice,mps,sso}/shared       │  ← 서비스 IAM
 ├─────────────────────────────────────────┤
 │  internal/groundctrl                    │  ← 내부 운영 서버
 ├─────────────────────────────────────────┤

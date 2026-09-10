@@ -77,7 +77,7 @@ S3로 분리하면 가중치 버전 관리도 이미지와 독립적으로 가�
   ],
   "logConfiguration": {
     "logDriver": "awslogs",
-    "options": { "awslogs-group": "/ecs/satchat/object-detection", "awslogs-region": "ap-northeast-2" }
+    "options": { "awslogs-group": "/ecs/coreservice/object-detection", "awslogs-region": "ap-northeast-2" }
   }
 }
 ```
@@ -110,7 +110,7 @@ GPU 사용률/VRAM 대시보드와 OOM Alert는 [[05-핵심 서비스 CloudWatch
 ## 결과
 
 - **ECS 전환** — object-detection/change-detection/mangrove 3개 서비스 정상 운영 전환, VRAM 사용량 ~6.6GB/15.4GB
-- **ALB 라우팅** — 도메인 3개(`satchat-ml-*.telepix.ai`) 라우팅 구성, 헬스체크 전부 healthy, 단 이 시점 ALB/타겟그룹/리스너룰은 콘솔 수동 생성 → Terraform state 밖, 편입은 후속 작업 ([[03-ALB 타겟그룹 Terraform 편입]])
+- **ALB 라우팅** — 도메인 3개(`coreservice-ml-*.telepix.ai`) 라우팅 구성, 헬스체크 전부 healthy, 단 이 시점 ALB/타겟그룹/리스너룰은 콘솔 수동 생성 → Terraform state 밖, 편입은 후속 작업 ([[03-ALB 타겟그룹 Terraform 편입]])
 - **보안그룹 분리** — ALB 전용 보안그룹과 GPU 노드 보안그룹 분리, 네트워크 경계 명확화
 - **온프렘 병행 유지** — LLM 서버 URL 전환 확인 완료 전까지 온프렘 서비스 유지 (트래픽 유실 방지)
 - **CI/CD 미착수** — Phase 7(파이프라인 구성) 계획만 존재, 현재 수동 배포로 운영
@@ -139,4 +139,4 @@ GPU 사용률/VRAM 대시보드와 OOM Alert는 [[05-핵심 서비스 CloudWatch
 - [[04-ECS 로그 Grafana Loki 수집|ECS 로그 모니터링 (GPU 로그 그룹 편입)]]
 - [[05-핵심 서비스 CloudWatch-Grafana Alert 설계|핵심 서비스 대시보드/Alert (GPU Container Insights 미구현 항목)]]
 - [[03-ALB 타겟그룹 Terraform 편입|ALB/타겟그룹 Terraform 편입 (후속 작업)]]
-- [[satchat-gpu CloudFormation 이중소유 정리 사고|CloudFormation 이중소유 정리 사고 (후속 작업 중 발생)]]
+- [[coreservice-gpu CloudFormation 이중소유 정리 사고|CloudFormation 이중소유 정리 사고 (후속 작업 중 발생)]]

@@ -23,25 +23,25 @@ status: done
 
 ## 구현
 
-- `infra/aws/load_balancer.tf` — 레거시 ALB(`satchat-ai-alb`) Terraform 코드로 이관
+- `infra/aws/load_balancer.tf` — 레거시 ALB(`coreservice-ai-alb`) Terraform 코드로 이관
 - `infra/aws/lb_listener.tf` — HTTPS(443) 리스너 이관, default action 404 fixed-response
 - `infra/aws/target_group.tf` — 서비스별 타겟그룹 3개 이관 (`target_type=instance`, 헬스체크 `/health`)
 - `infra/aws/lb_listener_rule.tf` — host-header 리스너룰 3개(priority 10/11/12) 코드화 후 import
 
 | 서비스 | 타겟그룹명 | 포트 |
 |---|---|---|
-| object-detection | satchat-object-detection-tg | 8765 |
-| change-detection | satchat-change-detection-tg | 8767 |
-| mangrove | satchat-mangrove-tg | 8032 |
+| object-detection | coreservice-object-detection-tg | 8765 |
+| change-detection | coreservice-change-detection-tg | 8767 |
+| mangrove | coreservice-mangrove-tg | 8032 |
 
 - 레거시 `ai-service` 전용 미사용 타겟그룹 제거
-- `project/satchat/gpu/ecs_service.tf` — `aws_lb_target_group_attachment`로 GPU 노드-타겟그룹 연결 구성 (인스턴스 ID + 포트 방식)
+- `project/coreservice/gpu/ecs_service.tf` — `aws_lb_target_group_attachment`로 GPU 노드-타겟그룹 연결 구성 (인스턴스 ID + 포트 방식)
 
 ## 결과
 
 - **편입 완료** — ALB 1개/리스너/타겟그룹 3개/리스너룰 3개, 신규 생성 없이 Terraform 관리 범위로 편입, 트래픽 경로·설정 변경 없음
 - **드리프트 방지** — 이후 변경은 Terraform 필수 경유, 콘솔 직접 수정 시 다음 plan에서 드리프트로 감지
-- **레포 분리** — `infra/aws/`(ALB/타겟그룹/리스너/리스너룰) ↔ `project/satchat/gpu/`(타겟그룹 attachment), 공용/서비스전용 레포 계층 구조 유지
+- **레포 분리** — `infra/aws/`(ALB/타겟그룹/리스너/리스너룰) ↔ `project/coreservice/gpu/`(타겟그룹 attachment), 공용/서비스전용 레포 계층 구조 유지
 
 ## 회고
 
@@ -52,11 +52,11 @@ status: done
 지금은 명시적인 게 낫다고 판단했지만, 노드가 늘어나는 시점에는 ECS 서비스의 `load_balancer` 블록 기반 자동 등록으로 다시 전환 필요
 
 이 작업을 진행하면서 예상치 못한 걸 하나 더 발견
-`satchat-gpu-cluster`의 ECS 서비스 3개가 Terraform뿐 아니라 콘솔(ECS Console V2)이 자동 생성한 CloudFormation 스택에도 동시에 소유된 상태
-이 이중 소유권을 정리하는 과정에서 실제로 서비스 하나가 삭제·재생성되는 사고까지 발생 ([[satchat-gpu CloudFormation 이중소유 정리 사고|별도 문서]] 정리)
+`coreservice-gpu-cluster`의 ECS 서비스 3개가 Terraform뿐 아니라 콘솔(ECS Console V2)이 자동 생성한 CloudFormation 스택에도 동시에 소유된 상태
+이 이중 소유권을 정리하는 과정에서 실제로 서비스 하나가 삭제·재생성되는 사고까지 발생 ([[coreservice-gpu CloudFormation 이중소유 정리 사고|별도 문서]] 정리)
 
 ## 관련 문서
 - [[jtkdy/TelePIX/01. infra/00-index|01. infra 인덱스]]
 - [[GPU 딥러닝 서빙 마이그레이션|프로젝트 전체 타임라인]]
 - [[02-GPU 딥러닝 모델 서빙 ECS 이관]]
-- [[satchat-gpu CloudFormation 이중소유 정리 사고]]
+- [[coreservice-gpu CloudFormation 이중소유 정리 사고]]
