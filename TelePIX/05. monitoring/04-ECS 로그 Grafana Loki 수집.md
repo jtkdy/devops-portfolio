@@ -84,6 +84,9 @@ Loki 레이블은 아래 세 가지를 기본으로 사용
 
 대시보드는 서비스군별 섹션(핵심 서비스/미디어 처리/SSO/GPU)으로 나누고, 각 섹션에 ERROR/WARN 건수 Stat 패널, 서비스별 ERROR 추이 Timeseries, 실시간 로그 Logs 패널을 배치하는 구조로 통일
 
+![[loki-log-dashboard.png]]
+*핵심 서비스 섹션 — ERROR/WARN 건수, 전체 로그 볼륨, 서비스별 ERROR 추이 (서비스명은 마스킹)*
+
 ## 결과
 
 - ECS 서비스 로그 15개 로그 그룹을 Loki로 실시간 수집

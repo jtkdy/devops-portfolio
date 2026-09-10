@@ -81,6 +81,13 @@ def lambda_handler(event, context):
 ## 결과
 
 - Grafana Alert 발생 시 Slack 알람 스레드에 AI 조치 가이드가 자동으로 첨부
+
+![[grafana-alert-message.png]]
+*원본 Slack 알람 (서버명은 마스킹)*
+
+![[ai-remediation-thread.png]]
+*스레드에 자동 첨부된 AI 조치 가이드 — 원인 분석/즉시 조치/확인 포인트/에스컬레이션 기준까지 자동 생성*
+
 - 월 예상 비용은 알람 100건 기준 약 $0.13, 1,000건 기준 약 $1.30 (gpt-4.1-mini 기준) + Secrets Manager 고정비 약 $0.80/월
 - 기존 Slack 알람 흐름 유지, 부가 기능만 추가 → 운영 중단 없이 배포
 
