@@ -10,7 +10,6 @@ status: active
 |---|---|---|---|---|
 | 1 | 2026-06-09 ~ 06-30 | [[02-GPU 딥러닝 모델 서빙 ECS 이관]] | infra | 온프렘 → ECS 이관 본작업. Grafana 검증을 계획에 내장, GPU 리소스 예약 충돌 등 실전 트러블슈팅 다수 |
 | 2 | 2026-07-20 | [[03-ALB 타겟그룹 Terraform 편입]] | infra | 이관 때 급히 콘솔로 만든 ALB/타겟그룹을 Terraform으로 편입 |
-| 3 | 2026-07-23 | [[coreservice-gpu CloudFormation 이중소유 정리 사고]] | incidents | 2번 작업 중 발견한 Terraform·CloudFormation 이중 소유권을 정리하다 서비스 삭제·재생성 사고 발생 |
 
 ## 참고 (이 프로젝트가 걸쳐있는 더 큰 문서)
 
