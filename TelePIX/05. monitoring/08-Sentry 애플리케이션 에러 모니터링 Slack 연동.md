@@ -12,11 +12,11 @@ status: draft
 ## 접근
 
 Sentry 도입해 애플리케이션 에러 트래킹, Slack 연동으로 실시간 알림 체계 구축
-프로젝트별로 알림 채널 분리 — satchat, Keycloak 각각 별도 채널로 라우팅해 담당 영역별로 확인하도록 구성
+프로젝트별로 알림 채널 분리 — coreservice, Keycloak 각각 별도 채널로 라우팅해 담당 영역별로 확인하도록 구성
 
 ## 구현
 
-- satchat, Keycloak 서비스에 각각 Sentry 프로젝트 연동
+- coreservice, Keycloak 서비스에 각각 Sentry 프로젝트 연동
 - 서비스별 Slack 알림 채널 분리 구성
 
 ## 결과

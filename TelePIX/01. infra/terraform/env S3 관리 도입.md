@@ -28,8 +28,8 @@ s3-버킷/
 ├── internal/groundctrl/.env
 └── project/
     ├── mps/product/.env
-    ├── satchat/product/.env
-    ├── satchat/shared/.env
+    ├── coreservice/product/.env
+    ├── coreservice/shared/.env
     └── sso/product/.env
 ```
 

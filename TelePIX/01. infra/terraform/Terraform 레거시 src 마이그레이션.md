@@ -27,16 +27,16 @@ state에 남아있는 리소스가 `managed`인지 `data`(조회 전용)인지 �
 2. 독립적이고 단순한 리소스부터 `infra/aws`로 이관 (Tier 1)
 3. 민감정보 포함되거나 여러 리소스와 얽힌 것 (Tier 2)
 4. 공유 VPC 네트워크 전체 (Tier 3)
-5. satchat GPU 인프라 (Tier 4)
+5. coreservice GPU 인프라 (Tier 4)
 
 ## 구현
 
 | 단계 | 대상 | 방식 |
 | --- | --- | --- |
-| 1. drift 정리 | state에만 남은 삭제 리소스 9건 (`satchat` EFS 관련 3건, `t_common` DocumentDB 관련 5건) | `terraform state rm`으로 state에서만 제거 |
+| 1. drift 정리 | state에만 남은 삭제 리소스 9건 (`coreservice` EFS 관련 3건, `t_common` DocumentDB 관련 5건) | `terraform state rm`으로 state에서만 제거 |
 | 2. t_common 이관 | KMS key/SG 4개/RDS parameter·subnet group(Tier 1) → RDS 인스턴스/ElastiCache/NAT·bastion/route(Tier 2) | `terraform import`로 순차 편입 |
 | 3. t_base(VPC 네트워크) 이관 | VPC/subnet 8개/IGW/route table + S3 Gateway Endpoint(조회 중 신규 발견) | `terraform import`로 편입 |
-| 4. satchat GPU 인프라 이관 | ECS 클러스터/ASG/ALB/리스너/target group/서비스 3개 | `terraform import`로 순차 편입 |
+| 4. coreservice GPU 인프라 이관 | ECS 클러스터/ASG/ALB/리스너/target group/서비스 3개 | `terraform import`로 순차 편입 |
 | 5. 마무리 | `t_apply` | `bootstrap/`으로 이름·위치 변경 |
 
 이관 과정에서 발견한 것들
@@ -46,7 +46,7 @@ state에 남아있는 리소스가 `managed`인지 `data`(조회 전용)인지 �
   - RDS 비밀번호는 placeholder+`ignore_changes`로 분리
   - 이관 대상 자체가 없던 ElastiCache user는 삭제
 - **t_base** — `terraform import`가 원격 state를 즉시 바꾸는 특성 때문에 머지 전 VPC 삭제 시도 near-miss 발생(최소권한 원칙 덕에 실패로 그침), route table import는 VPC ID 기준이라는 함정 확인
-- **satchat GPU** — 콘솔 수동 생성 리소스(리스너 규칙·target group 3개씩)를 실물 조회로 확인 후 편입, 미사용 `ai-service`는 destroy
+- **coreservice GPU** — 콘솔 수동 생성 리소스(리스너 규칙·target group 3개씩)를 실물 조회로 확인 후 편입, 미사용 `ai-service`는 destroy
 - **마무리** — state key는 디렉토리 경로와 무관해 파일 이동만으로 실 인프라 영향 없이 종료
 
 ## 결과
