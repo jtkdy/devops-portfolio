@@ -53,10 +53,9 @@ status: done
 
 이 작업을 진행하면서 예상치 못한 걸 하나 더 발견
 `coreservice-gpu-cluster`의 ECS 서비스 3개가 Terraform뿐 아니라 콘솔(ECS Console V2)이 자동 생성한 CloudFormation 스택에도 동시에 소유된 상태
-이 이중 소유권을 정리하는 과정에서 실제로 서비스 하나가 삭제·재생성되는 사고까지 발생 ([[coreservice-gpu CloudFormation 이중소유 정리 사고|별도 문서]] 정리)
+이 이중 소유권을 정리하는 과정에서 실제로 서비스 하나가 삭제·재생성되는 사고까지 발생
 
 ## 관련 문서
 - [[jtkdy/TelePIX/01. infra/00-index|01. infra 인덱스]]
 - [[GPU 딥러닝 서빙 마이그레이션|프로젝트 전체 타임라인]]
 - [[02-GPU 딥러닝 모델 서빙 ECS 이관]]
-- [[coreservice-gpu CloudFormation 이중소유 정리 사고]]

@@ -139,4 +139,3 @@ GPU 사용률/VRAM 대시보드와 OOM Alert는 [[05-핵심 서비스 CloudWatch
 - [[04-ECS 로그 Grafana Loki 수집|ECS 로그 모니터링 (GPU 로그 그룹 편입)]]
 - [[05-핵심 서비스 CloudWatch-Grafana Alert 설계|핵심 서비스 대시보드/Alert (GPU Container Insights 미구현 항목)]]
 - [[03-ALB 타겟그룹 Terraform 편입|ALB/타겟그룹 Terraform 편입 (후속 작업)]]
-- [[coreservice-gpu CloudFormation 이중소유 정리 사고|CloudFormation 이중소유 정리 사고 (후속 작업 중 발생)]]
