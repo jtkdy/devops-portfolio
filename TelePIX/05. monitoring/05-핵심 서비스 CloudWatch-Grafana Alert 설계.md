@@ -68,7 +68,7 @@ Alert 메시지 템플릿에서 동적 수치를 표시할 때 `$values.A.Value`
 | ALB | 5xx Warning/Critical | 10~49건 / 50건 초과 | warning/critical |
 | ALB | Latency Warning/Critical | p99 3~5s / 5s 초과 | warning/critical |
 
-RDS/Redis Alert Rule 생성 완료, ACM Alert Rule은 Description 템플릿까지만 확정하고 Rule 생성은 진행 중
+RDS/Redis Alert Rule 생성 완료
 
 ![[alert-rule-critical.png]]
 *Critical Alert Rule 목록 (Warning은 별도 폴더로 분리) — Service Down, ECS/RDS/Redis CPU, ALB 5xx/Latency 등 운영 중*
@@ -96,9 +96,8 @@ RDS/Redis Alert Rule 생성 완료, ACM Alert Rule은 Description 템플릿까�
 
 대시보드보다 Alert 설계에 시간이 더 소요
 특히 Warning/Critical을 하나의 Rule로 합치려다가 severity 라벨 제약 때문에 막혔던 부분, 템플릿 변수 문법이 문서화가 부실해서 직접 하나씩 찍어보고 확인해야 했던 부분이 기억에 남음
-남은 과제는 세 가지로 정리
+남은 과제는 두 가지로 정리
 
-- **RDS/Redis/ACM Alert Rule** — Description 템플릿까지만 확정, 생성은 미완료
 - **SQS 모니터링** — 패널 자체가 아직 미구현
 - **GPU 클러스터 Container Insights** — 활성화 여부 결정 필요
 
