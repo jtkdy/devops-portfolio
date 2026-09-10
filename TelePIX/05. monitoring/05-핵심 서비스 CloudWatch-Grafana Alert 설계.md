@@ -34,6 +34,9 @@ CloudWatch를 IAM Role Assume 방식으로 연결하고, 서비스 리소스군�
 
 SLI Row는 가용성(`(A-B)/(A+0.001)*100`), 에러율, Latency를 Expression으로 별도 계산해서 리소스 지표와 나란히 배치
 
+![[sli-dashboard.png]]
+*SLI Row 대시보드 (최근 24시간) — 가용성 99.7%, Error Rate 0.263%, p50/p90/p99 응답시간. 이 구간엔 5xx 스파이크가 섞여 있어 SLO(99.9%) 대비 소폭 미달로 잡힘*
+
 ### SLO 기준
 
 | 구분 | 가용성 | Error Rate | p50 | p90 | p99 |
@@ -65,7 +68,10 @@ Alert 메시지 템플릿에서 동적 수치를 표시할 때 `$values.A.Value`
 | ALB | 5xx Warning/Critical | 10~49건 / 50건 초과 | warning/critical |
 | ALB | Latency Warning/Critical | p99 3~5s / 5s 초과 | warning/critical |
 
-RDS/Redis/ACM Alert Rule은 Description 템플릿까지는 확정, Rule 생성은 진행 중
+RDS/Redis Alert Rule 생성 완료, ACM Alert Rule은 Description 템플릿까지만 확정하고 Rule 생성은 진행 중
+
+![[alert-rule-critical.png]]
+*Critical Alert Rule 목록 (Warning은 별도 폴더로 분리) — Service Down, ECS/RDS/Redis CPU, ALB 5xx/Latency 등 운영 중*
 
 ### IAM AssumeRole 반복 실패 트러블슈팅
 
