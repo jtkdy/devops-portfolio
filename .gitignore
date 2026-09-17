@@ -3,3 +3,6 @@
 .obsidian/plugins/
 .obsidian/community-plugins.json
 .trash/
+
+# 개인 서류 (이력서, 증명서 등)
+서류/
