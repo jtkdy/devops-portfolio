@@ -13,7 +13,7 @@ status: active
 | 폴더 | 주제 | 인덱스 |
 |---|---|---|
 | [[jtkdy/TelePIX/01. infra/00-index\|01. infra]] | Terraform 인프라 관리, 비용 태깅, AWS/온프렘 작업(GPU 이관, ALB Terraform 편입 등) | [[jtkdy/TelePIX/01. infra/00-index]] |
-| [[jtkdy/TelePIX/02. security/00-index\|02. security]] | OS 하드닝, 네트워크 IDS, IAM Roles Anywhere, Wazuh, Prowler | [[jtkdy/TelePIX/02. security/00-index]] |
+| [[jtkdy/TelePIX/02. security/00-index\|02. security]] | OS 보안취약점 조치, 네트워크 IDS, IAM Roles Anywhere, Wazuh, Prowler | [[jtkdy/TelePIX/02. security/00-index]] |
 | [[jtkdy/TelePIX/03. incidents/00-index\|03. incidents]] | 장애/인시던트 대응 기록 | [[jtkdy/TelePIX/03. incidents/00-index]] |
 | [[jtkdy/TelePIX/04. 개발자 포탈/00-index\|04. 개발자 포탈]] | 사내 개발자 포탈 구축 시리즈 | [[jtkdy/TelePIX/04. 개발자 포탈/00-index]] |
 | [[jtkdy/TelePIX/05. monitoring/00-index\|05. monitoring]] | Grafana 기반 모니터링 스택 구축 시리즈 | [[jtkdy/TelePIX/05. monitoring/00-index]] |

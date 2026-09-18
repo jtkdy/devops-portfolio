@@ -1,7 +1,7 @@
 ---
-title: KISA 하드닝 스크립트 개요
+title: KISA OS 보안취약점 조치 스크립트 개요
 date: 2026-06-01
-tags: [security, kisa, hardening, ubuntu, al2023, rocky]
+tags: [security, kisa, vulnerability, ubuntu, al2023, rocky]
 status: done
 ---
 ## 배경

@@ -4,16 +4,16 @@ date: 2026-08-27
 tags: [index, moc, security]
 status: active
 ---
-OS 하드닝부터 네트워크 IDS, 온프렘 AWS 인증, 호스트 보안 모니터링, CSPM까지 보안 스택 전반을 주제별로 정리
+OS 보안취약점 조치부터 네트워크 IDS, 온프렘 AWS 인증, 호스트 보안 모니터링, CSPM까지 보안 스택 전반을 주제별로 정리
 대략적인 구축 순서대로 나열
 
-## 1. OS 보안조치 (KISA 하드닝)
+## 1. OS 보안취약점 조치 (KISA 가이드)
 
 기준: KISA 주요정보통신기반시설 기술적 취약점 분석·평가 방법 상세가이드, Unix 서버 U-01~U-67 전 항목 자동화. (2026-06-01)
 
 | 문서 | 내용 |
 |---|---|
-| [[00-KISA 하드닝 개요]] | CHECK/FIX/VERIFY 모드 설계, OpenSCAP 교차 검증 |
+| [[00-KISA OS 보안취약점 조치 개요]] | CHECK/FIX/VERIFY 모드 설계, OpenSCAP 교차 검증 |
 | [[jtkdy/TelePIX/02. security/OS 보안조치/scripts/Ubuntu 20, 24]] | Ubuntu 24.04용 스크립트 |
 | [[jtkdy/TelePIX/02. security/OS 보안조치/scripts/AmazonLinux 2023]] | Amazon Linux 2023용 스크립트 |
 | [[jtkdy/TelePIX/02. security/OS 보안조치/scripts/Rocky 9]] | Rocky Linux 9용 스크립트 |

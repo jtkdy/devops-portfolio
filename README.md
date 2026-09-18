@@ -16,7 +16,7 @@
 - **`제주항공/`** — 시간순 프로젝트 기록 8건 (EKS 전환, 미들웨어 전환, 비용 최적화, 장애 대응 등)
 - **`TelePIX/`** — 기술 도메인별 구조
   - `01. infra` — Terraform 인프라 관리, AWS/온프렘 작업
-  - `02. security` — OS 하드닝, 네트워크 IDS, IAM Roles Anywhere, Wazuh, Prowler
+  - `02. security` — OS 보안취약점 조치, 네트워크 IDS, IAM Roles Anywhere, Wazuh, Prowler
   - `03. incidents` — 장애/인시던트 대응 기록
   - `04. 개발자 포탈` — 사내 개발자 포탈 구축 시리즈
   - `05. monitoring` — Grafana 기반 모니터링 스택 구축 시리즈
