@@ -23,5 +23,5 @@ Keycloak 라이브러리 몽키패치 정리 — JWT 검증 leeway 등 우회 �
 리스크 큰 변경 유형 사전 목록화 — 스키마 변경·시크릿 처리·인증 경계 등 고위험 변경에 대해 사고 나기 전에 체크리스트 확보 ([[07-Store 스키마 마이그레이션 장애]])
 
 ## 관련 문서
-- [[jtkdy/TelePIX/00-index|jtkdy 전체 인덱스]]
-- [[jtkdy/TelePIX/05. monitoring/00-index|05. monitoring 인덱스]] (06번 장애 관리가 참조하는 알림 체계)
+- [[TelePIX/00-index|jtkdy 전체 인덱스]]
+- [[TelePIX/05. monitoring/00-index|05. monitoring 인덱스]] (06번 장애 관리가 참조하는 알림 체계)

@@ -76,7 +76,7 @@ PBR 같은 정책 기반 라우팅은 방화벽 룰만 봐서는 실제 트래�
 "이 트래픽이 어디로 나가는가"를 표로 명시적으로 재구성하는 작업이 번거로웠지만, 그 표가 없었다면 IDS 미러링 대상을 잘못 잡았을 가능성
 
 ## 관련 문서
-- [[jtkdy/TelePIX/01. infra/00-index|01. infra 인덱스]]
+- [[TelePIX/01. infra/00-index|01. infra 인덱스]]
 - [[01-MikroTik-Suricata-Wazuh 온프렘 IDS 구축]]
 - [[02-WireGuard 터널로 EC2-온프렘 SSH 접근 구성]]
 - [[홈페이지 임시서버 크립토재킹 사고]]

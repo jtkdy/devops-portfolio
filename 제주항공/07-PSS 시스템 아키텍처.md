@@ -1,6 +1,7 @@
 ---
 title: PSS 시스템 아키텍처 성격 진단 (MSA 여부)
 date: 2025-05-01
+updated: 2026-10-04
 tags: [제주항공, architecture, eks, msa]
 status: draft
 ---
@@ -16,14 +17,14 @@ EKS 클러스터 하나에 여러 업무(홈페이지/예약/결제/OTA 등)가 
 - **배포** — 업무별 ECR Repository, 배포 정책(Rolling Update), Node Replicas/HPA 설정이 독립적인지 구성정의서 상의 배포정책 항목으로 확인
 - **데이터** — SG 아웃바운드 룰에서 DB로 나가는 포트·대상을 추적, JNDI/DB 계정 매핑을 업무별로 대조해 계정(스키마) 분리 여부와 물리 DB 인스턴스 공유 여부를 구분
 - **네트워크** — SG를 노드그룹 단위로 열람해 서비스 경계와 네트워크 경계가 일치하는지 확인, 서브넷 구성표와 교차 검증
-- **통신** — SG로 열린 포트가 API 포트인지 DB 포트인지 구분, AWS MQ 구성 슬라이드에서 실제 용도(트랜잭션 이벤트 vs 캐시 동기화)를 확인
+- **통신** — SG로 열린 포트가 API 포트인지 DB 포트인지 구분, Amazon MQ 구성 슬라이드에서 실제 용도(트랜잭션 이벤트 vs 캐시 동기화)를 확인
 
 ## 구현
 
 - **배포** — 홈페이지/서치/예약(IBE)/결제(PAE)/OTA/부가서비스(ANS)/웹체크인(WCS) 등 업무별로 ECR Repository와 배포정책이 분리되어 있고, 노드그룹 단위(WEB/APPLICATION/APPLICATION-PAE/APPLICATION-OTA)로 독립 배포 확인
 - **데이터** — 온프레미스 Oracle Exadata(RAC) 상에 업무 도메인별 Owner 계정(IBEP/OTAP/PAYP/ODS7CP/B2BP/B2EP/ODS1NP/NOTIP)이 스키마 단위로 분리되어 있으나, 물리 DB 인스턴스(IP 2대, 커스텀 포트)는 예약/결제/OTA/부가서비스 등 코어 업무가 공유하는 구조 확인. 반면 홈페이지 DB(HPGP)·고객예약정보관리 DB(JBELOGP)·API GW DB(APIP)·e-Accounting DB(EACP)는 AWS RDS(Aurora/MySQL)로 업무별 독립 인스턴스 구성
 - **네트워크** — SG 룰상 PAE, OTA는 같은 EKS 클러스터를 쓰면서도 보안상 이유로 서브넷이 분리되어 있는 반면, 홈페이지/서치/예약/부가서비스 등 나머지 업무는 Application 서브넷과 SG를 공용으로 사용 — 서비스 경계와 네트워크 경계가 일부만 일치
-- **통신** — HTTP/HTTPS 기반 API 호출(WAS 간 연동)과 DB 직접 커넥션(JNDI)이 혼재. AWS MQ는 컨텐츠/예약정보 2종 운영 중이나 둘 다 트랜잭션 이벤트가 아니라 캐시 갱신 브로드캐스트 용도로 한정된 것 확인
+- **통신** — HTTP/HTTPS 기반 API 호출(WAS 간 연동)과 DB 직접 커넥션(JNDI)이 혼재. Amazon MQ는 컨텐츠/예약정보 2종 운영 중이나 둘 다 트랜잭션 이벤트가 아니라 캐시 갱신 브로드캐스트 용도로 한정된 것 확인
 
 ## 결과
 

@@ -14,9 +14,9 @@ OS 보안취약점 조치부터 네트워크 IDS, 온프렘 AWS 인증, 호스�
 | 문서 | 내용 |
 |---|---|
 | [[00-KISA OS 보안취약점 조치 개요]] | CHECK/FIX/VERIFY 모드 설계, OpenSCAP 교차 검증 |
-| [[jtkdy/TelePIX/02. security/OS 보안조치/scripts/Ubuntu 20, 24]] | Ubuntu 24.04용 스크립트 |
-| [[jtkdy/TelePIX/02. security/OS 보안조치/scripts/AmazonLinux 2023]] | Amazon Linux 2023용 스크립트 |
-| [[jtkdy/TelePIX/02. security/OS 보안조치/scripts/Rocky 9]] | Rocky Linux 9용 스크립트 |
+| [[TelePIX/02. security/OS 보안조치/scripts/Ubuntu 20, 24]] | Ubuntu 24.04용 스크립트 |
+| [[TelePIX/02. security/OS 보안조치/scripts/AmazonLinux 2023]] | Amazon Linux 2023용 스크립트 |
+| [[TelePIX/02. security/OS 보안조치/scripts/Rocky 9]] | Rocky Linux 9용 스크립트 |
 
 ## 2. 네트워크 IDS (Suricata)
 
@@ -57,5 +57,5 @@ AWS 인프라 설정 오류를 탐지하는 CSPM 도구를 Self-Hosted로 구축
 | 2 | [[02-Prowler 보안 대시보드 연동]] | 사내 개발자 포탈 보안 탭에 Prowler API 연동, 캐시/권한 체크 추가 |
 
 ## 관련 문서
-- [[jtkdy/TelePIX/00-index|jtkdy 전체 인덱스]]
-- [[jtkdy/TelePIX/03. incidents/00-index|03. incidents 인덱스]]
+- [[TelePIX/00-index|jtkdy 전체 인덱스]]
+- [[TelePIX/03. incidents/00-index|03. incidents 인덱스]]

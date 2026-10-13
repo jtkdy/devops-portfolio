@@ -22,4 +22,4 @@ GuardDuty가 severity 9.0 알림을 잡아낸 사고 대응이, 2주 뒤 CSPM(Cl
 - **지금 상태**: Prowler로 매일 계정 전체를 스캔 중이고 결과를 개발자 포탈에서 바로 확인 가능 — High 527건 중 실제 조치/Mute 분류 작업은 아직 진행 중
 
 ## 관련 문서
-- [[jtkdy/TelePIX/00. projects/00-index|프로젝트 인덱스]]
+- [[TelePIX/00. projects/00-index|프로젝트 인덱스]]

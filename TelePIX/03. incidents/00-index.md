@@ -27,5 +27,5 @@ status: active
 | 6   | [[IAM 액세스키 탈취 인시던트 대응]]                      | 2026-08-12 | done          | GuardDuty severity 9.0 탐지, 액세스키 탈취 대응 및 로깅 체계 재점검            |
 
 ## 관련 문서
-- [[jtkdy/TelePIX/00-index|jtkdy 전체 인덱스]]
-- [[jtkdy/TelePIX/02. security/00-index|02. security 인덱스]]
+- [[TelePIX/00-index|jtkdy 전체 인덱스]]
+- [[TelePIX/02. security/00-index|02. security 인덱스]]

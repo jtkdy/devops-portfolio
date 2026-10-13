@@ -134,7 +134,7 @@ GPU 사용률/VRAM 대시보드와 OOM Alert는 [[05-핵심 서비스 CloudWatch
 - **T4 성능 미검증** — 기존 RTX 3090 Ti/4080 대비 추론 성능이 낮다는 점을 실측 검증 없이 배포부터 진행, Grafana 지표로 계속 확인 필요
 
 ## 관련 문서
-- [[jtkdy/TelePIX/01. infra/00-index|01. infra 인덱스]]
+- [[TelePIX/01. infra/00-index|01. infra 인덱스]]
 - [[GPU 딥러닝 서빙 마이그레이션|프로젝트 전체 타임라인]]
 - [[04-ECS 로그 Grafana Loki 수집|ECS 로그 모니터링 (GPU 로그 그룹 편입)]]
 - [[05-핵심 서비스 CloudWatch-Grafana Alert 설계|핵심 서비스 대시보드/Alert (GPU Container Insights 미구현 항목)]]

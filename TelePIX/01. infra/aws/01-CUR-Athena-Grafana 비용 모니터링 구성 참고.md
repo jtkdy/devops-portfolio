@@ -116,6 +116,6 @@ ORDER BY cost_usd DESC;
 | CPU 대비 비용 | CloudWatch CPUUtilization 오버레이 |
 
 ## 관련 문서
-- [[jtkdy/TelePIX/01. infra/00-index|01. infra 인덱스]]
+- [[TelePIX/01. infra/00-index|01. infra 인덱스]]
 - [[02-AWS 비용 모니터링 구축|왜/어떻게 만들었는지 서술형 기록]]
 - [[01-Grafana 통합 모니터링 스택 구축|Grafana 모니터링 스택 전체 개요]]

@@ -42,6 +42,6 @@ VPN 터널로 경로를 감싸는 것과 그 뒤에 있는 서버 자체의 방�
 VPN이 첫 번째 방어선이라면, 그 안에서도 서버별 접근 범위를 한 번 더 좁혀야 완료
 
 ## 관련 문서
-- [[jtkdy/TelePIX/02. security/00-index|02. security 인덱스]]
+- [[TelePIX/02. security/00-index|02. security 인덱스]]
 - [[01-MikroTik 듀얼 WAN 네트워크 아키텍처]]
 - [[홈페이지 임시서버 크립토재킹 사고]]

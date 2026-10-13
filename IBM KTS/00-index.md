@@ -18,4 +18,4 @@ IDC 이전, 신규 서버 구축, 매월 30건 이상의 하드웨어/OS 장애 
 | 5 | [[05-교보생명라이프플래닛 차세대 서버 구축]] | 2020.03~2020.07 | IDC 이전, alt disk 활용 OS 마이그레이션, HACMP 구성 |
 
 ## 관련 문서
-- [[jtkdy/TelePIX/00-index|TelePIX 인덱스]]
+- [[TelePIX/00-index|TelePIX 인덱스]]

@@ -26,4 +26,4 @@ GPU 서비스는 아래 두 모니터링 구축 작업에도 포함되어 있지
 - **지금 상태**: ECS 3개 서비스 정상 운영, ALB/보안그룹 분리 완료, Terraform 단독 관리로 정리 완료 — CI/CD 파이프라인과 GPU Container Insights는 아직 남은 과제
 
 ## 관련 문서
-- [[jtkdy/TelePIX/00. projects/00-index|프로젝트 인덱스]]
+- [[TelePIX/00. projects/00-index|프로젝트 인덱스]]

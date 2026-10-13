@@ -71,7 +71,7 @@ OpenAPI 스키마만 보고는 날짜 필터가 필수인지, 범위 제한이 �
 다만 기존 3개 API는 홈 위젯 때문에 그대로 열어둘 수밖에 없었는데, 이후 홈 위젯이 필요로 하는 데이터만 골라내는 요약 전용 엔드포인트를 따로 만들고 상세 API는 role로 잠그는 식으로 정리할 계획
 
 ## 관련 문서
-- [[jtkdy/TelePIX/02. security/00-index|02. security 인덱스]]
+- [[TelePIX/02. security/00-index|02. security 인덱스]]
 - [[01-Prowler Self-Hosted 구축]]
 - [[05-서비스 카탈로그 구축]] (동일 Store 패턴을 따르는 사내 개발자 포탈 기능)
 - [[IAM 액세스키 탈취 사고 대응과 CSPM 도입|프로젝트 전체 타임라인]]

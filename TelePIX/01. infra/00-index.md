@@ -46,4 +46,4 @@ Terraform으로 관리하는 AWS/온프렘 인프라 작업 기록
 | [[05-DocumentDB 폐기 조사]] | 태그 없는 방치 클러스터 2개, bastion 경유 직접 데이터 확인까지 거쳐 안전하게 폐기 |
 
 ## 관련 문서
-- [[jtkdy/TelePIX/00-index|jtkdy 전체 인덱스]]
+- [[TelePIX/00-index|jtkdy 전체 인덱스]]

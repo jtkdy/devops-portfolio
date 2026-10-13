@@ -17,4 +17,4 @@ status: active
 | [[IAM 액세스키 탈취 사고 대응과 CSPM 도입\|IAM 액세스키 탈취 사고 대응과 CSPM 도입]] | 2026-08-12 ~ 08-25 | incidents, security | [[IAM 액세스키 탈취 사고 대응과 CSPM 도입]] |
 
 ## 관련 문서
-- [[jtkdy/TelePIX/00-index|jtkdy 전체 인덱스 (도메인별)]]
+- [[TelePIX/00-index|jtkdy 전체 인덱스 (도메인별)]]

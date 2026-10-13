@@ -56,6 +56,6 @@ status: done
 이 이중 소유권을 정리하는 과정에서 실제로 서비스 하나가 삭제·재생성되는 사고까지 발생
 
 ## 관련 문서
-- [[jtkdy/TelePIX/01. infra/00-index|01. infra 인덱스]]
+- [[TelePIX/01. infra/00-index|01. infra 인덱스]]
 - [[GPU 딥러닝 서빙 마이그레이션|프로젝트 전체 타임라인]]
 - [[02-GPU 딥러닝 모델 서빙 ECS 이관]]

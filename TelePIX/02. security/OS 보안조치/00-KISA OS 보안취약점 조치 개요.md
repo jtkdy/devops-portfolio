@@ -32,9 +32,9 @@ Unix 서버 점검 항목(U-01~U-67) 67개를 서버마다 수작업으로 확�
 
 OS별로 스크립트를 따로 관리
 
-- Ubuntu 24.04용 스크립트 ([[jtkdy/TelePIX/02. security/OS 보안조치/scripts/Ubuntu 20, 24]])
-- Amazon Linux 2023용 스크립트 ([[jtkdy/TelePIX/02. security/OS 보안조치/scripts/AmazonLinux 2023]])
-- Rocky Linux 9용 스크립트 ([[jtkdy/TelePIX/02. security/OS 보안조치/scripts/Rocky 9]])
+- Ubuntu 24.04용 스크립트 ([[TelePIX/02. security/OS 보안조치/scripts/Ubuntu 20, 24]])
+- Amazon Linux 2023용 스크립트 ([[TelePIX/02. security/OS 보안조치/scripts/AmazonLinux 2023]])
+- Rocky Linux 9용 스크립트 ([[TelePIX/02. security/OS 보안조치/scripts/Rocky 9]])
 
 Ubuntu는 스크립트 항목 외에 공유메모리 보안 설정을 별도로 추가
 `/etc/fstab`에 `tmpfs /run/shm tmpfs defaults,noexec,nosuid,nodev 0 0`을 추가하고 재부팅해야 적용
@@ -68,4 +68,4 @@ oscap xccdf eval \
 조치를 걸기 전에 `--check-only`로 먼저 영향 범위를 파악하고, 문제가 될 만한 항목은 `--dry-run`으로 실제 변경 내용을 먼저 확인한 뒤에 적용하는 흐름이 자연스럽게 자리 잡음
 
 ## 관련 문서
-- [[jtkdy/TelePIX/02. security/00-index|02. security 인덱스]]
+- [[TelePIX/02. security/00-index|02. security 인덱스]]

@@ -19,5 +19,5 @@ Grafana Cloud 기반 통합 모니터링 스택 구축 시리즈
 | 8 | [[08-Sentry 애플리케이션 에러 모니터링 Slack 연동]] | Sentry로 애플리케이션 에러 트래킹, coreservice/Keycloak 서비스별 Slack 알림 채널 분리 |
 
 ## 관련 문서
-- [[jtkdy/TelePIX/00-index|jtkdy 전체 인덱스]]
-- [[jtkdy/TelePIX/04. 개발자 포탈/00-index|04. 개발자 포탈 인덱스]] (06번 장애 관리 자동화가 이 알림 체계를 참조)
+- [[TelePIX/00-index|jtkdy 전체 인덱스]]
+- [[TelePIX/04. 개발자 포탈/00-index|04. 개발자 포탈 인덱스]] (06번 장애 관리 자동화가 이 알림 체계를 참조)

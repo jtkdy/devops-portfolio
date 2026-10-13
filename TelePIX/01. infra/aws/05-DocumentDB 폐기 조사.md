@@ -57,5 +57,5 @@ bastion을 경유해서 `mongosh`로 직접 접속해 내부 데이터를 확인
 다만 이 방식이 통했던 건 TLS가 꺼져 있어서였고, 정상적으로 암호화된 DB였다면 비밀번호부터 확보해야 하는 문제라 이번처럼 쉽게 확인하지 못했을 것으로 예상
 
 ## 관련 문서
-- [[jtkdy/TelePIX/01. infra/00-index|01. infra 인덱스]]
+- [[TelePIX/01. infra/00-index|01. infra 인덱스]]
 - [[04-Redis 클러스터 폐기 조사]]

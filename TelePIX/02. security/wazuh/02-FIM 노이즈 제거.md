@@ -113,7 +113,7 @@ snap, CUPS 관련 노이즈는 설치 직후가 아니라 며칠 운영해보고
 운영 노드가 추가되면 해당 에이전트는 `/usr/bin`, `/usr/sbin` 모니터링을 별도로 활성화해야 하고, Ansible로 에이전트 설정을 관리하게 되면 개발/운영 프로파일을 나눠서 적용하는 구조를 만들 예정
 
 ## 관련 문서
-- [[jtkdy/TelePIX/02. security/00-index|02. security 인덱스]]
+- [[TelePIX/02. security/00-index|02. security 인덱스]]
 - [[01-에이전트 설치 및 구성]]
 - [[03-커스텀 룰 관리]]
 - [[04-CloudWatch 연동 및 데일리 리포트]]

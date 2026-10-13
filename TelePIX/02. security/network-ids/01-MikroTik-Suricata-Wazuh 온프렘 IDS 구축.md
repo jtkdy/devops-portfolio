@@ -170,7 +170,7 @@ TZSP 방식 자체의 한계(세션 중간 진입, 체크섬 오탐)도 구조�
 Office VLAN 미러링 추가와 SCA CIS Benchmark 조치, 오탐 패턴 추가 튜닝도 다음 작업으로 남음
 
 ## 관련 문서
-- [[jtkdy/TelePIX/02. security/00-index|02. security 인덱스]]
+- [[TelePIX/02. security/00-index|02. security 인덱스]]
 - [[01-에이전트 설치 및 구성]]
 - [[04-CloudWatch 연동 및 데일리 리포트]]
 - [[온프렘 보안 모니터링 스택 구축|프로젝트 전체 타임라인]]

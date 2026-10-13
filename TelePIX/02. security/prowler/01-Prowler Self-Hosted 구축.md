@@ -143,7 +143,7 @@ SSM 포트포워딩 방식은 보안적으로는 최선이지만 터미널을 �
 High 527건을 하나씩 검토해서 실제 조치 대상과 Mute 대상을 분류하는 작업이 남음
 
 ## 관련 문서
-- [[jtkdy/TelePIX/02. security/00-index|02. security 인덱스]]
+- [[TelePIX/02. security/00-index|02. security 인덱스]]
 - [[02-Prowler 보안 대시보드 연동]]
 - [[IAM 액세스키 탈취 인시던트 대응]]
 - [[IAM 액세스키 탈취 사고 대응과 CSPM 도입|프로젝트 전체 타임라인]]

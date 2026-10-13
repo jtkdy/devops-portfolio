@@ -69,4 +69,4 @@ DB 정합성 문제가 제일 걱정되는 지점이라 pg_dump 백업을 먼저
 rsync 복사 자체는 Docker를 내린 채로 30~40분이 걸릴 것으로 예상하고 있어서 이 부분이 실제로 얼마나 걸릴지가 이번 작업의 가장 큰 변수
 
 ## 관련 문서
-- [[jtkdy/TelePIX/01. infra/00-index|01. infra 인덱스]]
+- [[TelePIX/01. infra/00-index|01. infra 인덱스]]

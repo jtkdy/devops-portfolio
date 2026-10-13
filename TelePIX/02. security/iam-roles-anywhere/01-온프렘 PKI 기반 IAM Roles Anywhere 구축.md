@@ -152,6 +152,6 @@ aws s3 ls s3://<bucket-name> --profile roles-anywhere
 이 체계 위에서 실제로 처음 돌아간 워크로드는 [[04-CloudWatch 연동 및 데일리 리포트|Wazuh 이벤트를 CloudWatch로 밀어올리는 파이프라인]]
 
 ## 관련 문서
-- [[jtkdy/TelePIX/02. security/00-index|02. security 인덱스]]
+- [[TelePIX/02. security/00-index|02. security 인덱스]]
 - [[04-CloudWatch 연동 및 데일리 리포트]]
 - [[온프렘 보안 모니터링 스택 구축|프로젝트 전체 타임라인]]

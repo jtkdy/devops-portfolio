@@ -1,6 +1,7 @@
 ---
 title: EKS 관리형 노드그룹 최적화 및 업그레이드
 date: 2025-04-01
+updated: 2026-10-02
 tags: [제주항공, eks, kubecost, terraform, cost-optimization]
 status: draft
 ---
@@ -13,6 +14,7 @@ status: draft
 
 Kubecost 및 Prometheus로 시스템별 리소스 사용률을 정밀 분석해서 노드그룹 통합을 통한 비용 절감 로드맵을 선제적으로 제안 → 노드그룹 19개를 5개로 축소
 수동 운영 방식을 탈피하기 위해 Terraform 및 YAML 기반의 코드로 인프라를 정의, 배포 속도를 높이고 버전 관리가 가능한 환경으로 설계
+오토스케일링 방식은 Karpenter 도입을 검토했다가 철수, 일반 ASG(Cluster Autoscaler) 유지로 결정 — 제주항공 특성상 이벤트성 트래픽이 짧은 시간 동안 폭주하는 패턴이라, 노드를 작게 유지하다 빠르게 스케일하는 비용 최적화보다 Replica Set을 사전에 넉넉히 확보해 서비스 안정성을 우선하는 쪽이 낫다고 판단
 
 ## 구현
 
