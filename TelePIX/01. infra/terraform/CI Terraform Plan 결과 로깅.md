@@ -1,6 +1,7 @@
 ---
 title: CI에서 Terraform Plan 결과 로깅하는 로직
 date: 2026-08-27
+updated: 2026-10-19
 tags: [terraform, ci-cd, bitbucket-pipelines]
 status: done
 ---
@@ -18,7 +19,10 @@ PR을 올릴 때마다 어떤 리소스가 어떻게 바뀌는지 리뷰어가 �
 
 ## 구현
 
-CI 구성은 Bitbucket Pipelines(`bitbucket-pipelines.yml`)이고, PR 파이프라인은 OIDC로 AWS 역할을 assume한 뒤 `scripts/tf-plan-pr.sh`를 실행한다.
+CI 구성은 Bitbucket Pipelines(`bitbucket-pipelines.yml`), dev·stg·prod 환경 구분도 이 파일에 정의
+PR 파이프라인은 장기 액세스키 대신 OIDC로 AWS 역할을 assume한 뒤 `scripts/tf-plan-pr.sh` 실행
+
+- **OIDC 역할 범위 제한** — trust policy에 레포 UUID를 조건으로 걸어 지정한 레포의 파이프라인만 assume 가능, 서비스 파이프라인 역할 권한은 해당 서비스 ECR 레포 push로만 제한
 
 - **변경 디렉토리 탐지** — `git diff --name-only ${BITBUCKET_PR_DESTINATION_COMMIT}...HEAD`로 변경된 `.tf` 탐지, `bootstrap/` 제외
 - **Terraform 루트 판별** (`find_root`) — 변경 파일 상위 탐색, `provider.tf` 있는 첫 디렉토리를 루트로 판단

@@ -1,6 +1,7 @@
 ---
 title: Terraform 레거시 src/ 마이그레이션
 date: 2026-07-13
+updated: 2026-10-19
 tags: [terraform, migration, legacy, infra]
 status: done
 ---
@@ -63,5 +64,12 @@ security group 규칙, ElastiCache 로그 설정, EC2 IAM profile 등 실제 리
 
 `terraform import`가 원격 shared state를 즉시 바꾼다는 것도 위험 포인트
 VPC 삭제 시도 near-miss가 없었다면 이 작업 방식이 얼마나 위험한지 몰랐을 것으로 추정
+
+### 이후 drift 재발 방지
+
+- **콘솔 쓰기 권한 축소** — IAM Identity Center Permission Set(devops, backend, frontend로 분리, 담당자 계정 할당)에서 콘솔 쓰기 권한을 줄이고 인프라 변경은 CI OIDC 역할 경유로 통일, 위 VPC 삭제 near-miss가 실패로 끝난 것도 이 권한 제한 덕분
+- **태그 기반 식별** — 루트 모듈 전체 `default_tags` 적용 이후, 태그 없는 리소스를 콘솔 생성 리소스로 판단해 걸러냄
+- **긴급 변경 절차** — 장애 중 콘솔 변경은 허용하되, 같은 내용을 코드로 반영하는 PR을 올리는 걸 절차로 정함
+- **남은 과제** — 스케줄 파이프라인으로 `terraform plan -detailed-exitcode`를 주기 실행해 drift를 Slack으로 알리는 정기 감지는 미구현
 
 ## 관련 문서
