@@ -89,3 +89,41 @@ AK아이에스 - 제주항공 인프라 운영 및 DevOps (2021.07 ~ 2025.06)
 - 약 4년간 약 500TB 규모 백업 운영
 - 활용기술: NetWorker, ELK
 
+TelePIX
+사내 개발자 포탈 구축 (2026.05 ~ 2026.09)
+- JSON Store 기반 DB 없는 아키텍처, FastAPI/React 기반 설계
+- 기능: 배포 승인·서버 접근제어·보안 모니터링·서비스 카탈로그·장애 관리 통합 포탈 단독 구축
+- Bitbucket PR Approve 상태 서버 재검증 기반 배포 승인 게이트 구현, 상태 머신(pending→approved/rejected/executing/failed) 설계로 무리뷰 배포 차단
+- 사내 공용 Keycloak 라이브러리 부분 도입한 SSO 마이그레이션
+- 신규 서버 등록 절차 자동화,서버 접근 제어 등
+관련기술: FastAPI, React, Keycloak(OIDC), Bitbucket API, AWS SSM, Ansible, Docker
+
+------------------------------------------------------------------------------------------------
+
+보안 스택 구축 및 인시던트 대응 (2026.02 ~ 2026.09)
+- SSH 패스워드 인증 노출 크립토재킹 사고 원인 규명, 이를 계기로 MikroTik-Suricata-Wazuh 연동 온프렘 네트워크 IDS 구축
+- KISA 기반 Linux 서버 보안 취약점 조치 자동화, OpenSCAP 교차 검증
+- IAM Roles Anywhere(PKI) 기반 온프렘-AWS 무인증키 접근 체계 설계
+- Wazuh 호스트 보안 모니터링 도입, FIM 노이즈 제거·CloudWatch/Slack 연동 자동화
+- Self-Hosted Prowler(CSPM) 구축, 최초 스캔 1,838건 FAIL 확인 후 포탈 연동
+- GuardDuty severity 9.0 IAM 액세스키 탈취 인시던트 대응, 로깅 체계 재점검
+관련기술: Wazuh, Suricata, Prowler, AWS IAM Roles Anywhere, OpenSCAP, GuardDuty
+
+------------------------------------------------------------------------------------------------
+
+AWS/Terraform 인프라 관리 및 비용 최적화 (2026.02 ~ 2026.09)
+- 레거시 Terraform 리소스 실사용 검증 후 이관
+- 서비스별 비용 태깅 전략 수립, 루트 모듈 12개 전수 감사·정책 적용
+- 콘솔 수동 생성 ALB/타겟그룹/리스너룰 Terraform import로 코드 편입
+- 미사용 Redis 클러스터·태그 없는 DocumentDB 2개 교차검증 후 안전 폐기
+관련기술: Terraform, AWS
+
+------------------------------------------------------------------------------------------------
+
+Grafana 기반 통합 모니터링 구축 (2026.03 ~ 2026.09)
+- IAM 인증 기반 Grafana Cloud 통합 모니터링 구축
+- CUR 2.0 + Athena 기반 서비스별/리소스별 비용 분해
+- ECS 서비스 로그 Loki 실시간 수집
+- SLO 기반 Alert 설계, OpenAI 연동 조치 가이드 자동 응답
+- Lambda+EventBridge 기반 데일리/먼슬리 리포트 자동화 (비용 현황·CloudTrail 인프라 변경 이력·GuardDuty/Wazuh 보안 이벤트 매일 아침 Slack 요약 전송)
+관련기술: Grafana, Loki, Athena, CUR, Lambda, EventBridge, OpenAI API
