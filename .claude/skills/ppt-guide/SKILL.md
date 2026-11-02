@@ -25,7 +25,7 @@ All values are in points on a 960 x 540 pt canvas (13.333 x 7.5 in).
 | Chapter | 48 | 24 | 864 | 16 | Current chapter name |
 | Title | 48 | 42 | 864 | 40 | Slide title, one line |
 | Subtitle | 48 | 84 | 864 | 22 | One-line supporting statement |
-| Divider | 48 | 114 | 864 | 1 pt line | `hairline` |
+| Divider | 48 | 114 | 864 | 1.5 pt line | Ink `#0a0a0a`, separates the header from the body |
 | Body | 48 | 126 | 864 | 372 | Slide content, ends at y 498 |
 | Footer | 48 | 508 | 864 | 14 | Source on the left, page number on the right |
 
