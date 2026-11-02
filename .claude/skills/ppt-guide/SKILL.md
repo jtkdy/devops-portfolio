@@ -1,13 +1,13 @@
 ---
 name: ppt-guide
-description: Clean white 16:9 slide design system set only in Pretendard, with black ink, saturated identity cards, fixed header positions, and dense body layouts. Use whenever creating or editing a PPT, PPTX, slide deck, or presentation in this vault.
+description: Quiet, near-monochrome 16:9 slide design system set only in Pretendard, with one blue accent, fixed header positions, and dense body layouts. Use whenever creating or editing a PPT, PPTX, slide deck, or presentation in this vault.
 ---
 
 # Slide Design System
 
 ## Overview
 
-Stark white canvas with deep-black type: confident, technical, almost editorial. Saturated identity cards break the monochrome base the way album covers would, each one declaring the personality of a single topic. Everything else stays quiet: thin borders, soft gray fills, no decoration.
+Near-invisible design that lets the content speak, like a gallery wall behind an artifact. White and off-white surfaces, near-black type, soft gray tiles for emphasis, and a single quiet blue. Typography is confident but quiet. There are no gradients, shadows, or decorative frames.
 
 **Hard rules:**
 - Output 16:9 slides only. Never produce 4:3, A4, or any other ratio.
@@ -15,6 +15,7 @@ Stark white canvas with deep-black type: confident, technical, almost editorial.
 - Do not place a logo anywhere. Do not reserve space for one.
 - Keep the chapter, title, and subtitle at the exact same position on every content slide.
 - Fill the body zone. Do not leave the lower part of a slide empty.
+- Use one accent color only: Blue `#0066cc`. Do not add a second accent, including per company, product, or chapter.
 
 ## Canvas & Fixed Layout
 
@@ -25,7 +26,7 @@ All values are in points on a 960 x 540 pt canvas (13.333 x 7.5 in).
 | Chapter | 48 | 24 | 864 | 16 | Current chapter name |
 | Title | 48 | 42 | 864 | 40 | Slide title, one line |
 | Subtitle | 48 | 84 | 864 | 22 | One-line supporting statement |
-| Divider | 48 | 114 | 864 | 1.5 pt line | Ink `#0a0a0a`, separates the header from the body |
+| Divider | 48 | 114 | 864 | 1.5 pt line | Ink `#1d1d1f`, separates the header from the body |
 | Body | 48 | 126 | 864 | 372 | Slide content, ends at y 498 |
 | Footer | 48 | 508 | 864 | 14 | Source on the left, page number on the right |
 
@@ -68,42 +69,19 @@ The body zone must look deliberately full, while staying orderly.
 
 ## Colors
 
+### Accent
+- **Blue** (`#0066cc`): the only color in the system. Use it on at most one key number or one highlighted chart series per slide, and on links.
+
 ### Surface
-- **Canvas** (`#ffffff`): background of every content slide and of `card`.
-- **Surface** (`#f7f8fa`): `card-soft` fill and table header fill.
-- **Surface Soft** (`#f2f3f5`): quieter section divisions and nested blocks.
-- **Hairline** (`#e5e7eb`): 1 pt dividers and card borders.
-- **Hairline Soft** (`#eaecf0`): table row lines.
-- **Primary** (`#0a0a0a`): `card-dark` fill and primary `chip` fill.
+- **Canvas** (`#ffffff`): background of every slide and of `card`.
+- **Parchment** (`#f5f5f7`): `card-soft` fill, table header fill, and `tag` fill.
+- **Soft Tile** (`#e8e8ed`): `tile-soft` fill.
+- **Hairline** (`#e0e0e0`): 1 pt card borders and table row lines.
 
 ### Text
-- **Ink** (`#0a0a0a`): titles, headings, key numbers.
-- **Charcoal** (`#222222`): body text.
-- **Slate** (`#45515e`): subtitles and secondary text.
-- **Steel** (`#5f5f5f`): captions, table headers, sources, page numbers.
-- **On Dark** (`#ffffff`): text on `identity-card` and `card-dark`.
-
-Do not use lighter grays for text. They fall below a readable contrast on white.
-
-### Identity
-Each topic of a deck, such as a product, company, or chapter, gets one fixed identity color. Keep that assignment through the whole deck. Choose only from this list.
-
-- **Coral** (`#ff5530`): the most attention-grabbing color. Give it to the most important topic.
-- **Magenta** (`#ea5ec1`)
-- **Blue** (`#1456f0`)
-- **Purple** (`#a855f7`)
-
-**Rules:**
-- Use identity colors only on `identity-card`, `badge-identity`, one highlighted chart series, or one key number.
-- Never use them on body text or large surfaces other than `identity-card`.
-- Use at most one `identity-card` color per content slide. A slide that compares topics may use one card per topic.
-- White text on Coral, Magenta, and Purple is low in contrast. Use 16pt or larger on these fills. Use a caption size only on Blue.
-
-### Support
-- **Blue Deep** (`#1d4ed8`): text on `badge-info`, and links.
-- **Blue 200** (`#bfdbfe`): `badge-info` fill.
-- **Success Text** (`#1ba673`) on **Success Background** (`#e8ffea`): `badge-success` only.
-- **Midnight Blue 700** (`#17437d`): diagram connectors that need to stand out from gray.
+- **Ink** (`#1d1d1f`): titles, headings, key numbers, and the header divider.
+- **Ink Muted** (`#333333`): body text, subtitles, chapter labels, captions, and table headers.
+- **Fine Print** (`#7a7a7a`): page numbers and legal fine print only.
 
 ## Typography
 
@@ -113,42 +91,41 @@ Pretendard is the only family. Each weight has its own typeface name:
 
 | Weight | Typeface name | Use |
 |---|---|---|
-| 400 | `Pretendard` | Body text, key numbers' units |
-| 500 | `Pretendard Medium` | Chapter labels, subtitles, chips, table headers |
-| 600 | `Pretendard SemiBold` | All titles, card headings, key numbers, badges |
-| 700 | `Pretendard Bold` | Short inline emphasis in body text only |
+| 400 | `Pretendard` | Body text, subtitles, chapter labels, units, captions |
+| 600 | `Pretendard SemiBold` | All titles, card headings, key numbers, table headers, tags, inline emphasis |
 
-Other Pretendard weights are not part of this system. Do not use them unless the user asks.
+Weight 500 is deliberately absent. Other Pretendard weights are not part of this system. Do not use them unless the user asks.
 
 **PPTX requirements:**
 - Set the typeface on the `latin`, `ea`, and `cs` fonts of every run. Korean text uses `ea`, and it falls back to another font if `ea` is unset.
 - Do not apply the bold attribute. Select the weight through the typeface name.
 - Set the theme major and minor fonts to `Pretendard` as well.
-- Letter spacing below is in points. In PPTX XML, `spc` is in hundredths of a point (-0.6 pt is `spc="-60"`).
+- Letter spacing below is in points. In PPTX XML, `spc` is in hundredths of a point (-0.3 pt is `spc="-30"`).
 - The `spcPct` column is the value to write in PPTX. PowerPoint's 100% is about 119% of the font size for Pretendard, so it is not the same as the size-based line height in the `Line` column.
 
 ### Hierarchy
 
 | Token | Size | Typeface | Line | `spcPct` | Letter spacing | Color | Use |
 |---|---|---|---|---|---|---|---|
-| `cover-title` | 60pt | SemiBold | 1.10 | 92% | -1.5pt | Ink | Cover slide title |
-| `divider-title` | 42pt | SemiBold | 1.10 | 92% | -1.1pt | Ink | Section divider title |
-| `slide-title` | 30pt | SemiBold | 1.20 | 100% | -0.75pt | Ink | Slide title |
-| `card-heading` | 16pt | SemiBold | 1.20 | 100% | 0 | Ink | Card and block headings |
-| `metric` | 24pt | SemiBold | 1.20 | 100% | -0.5pt | Ink | Key numbers |
-| `metric-unit` | 12pt | Pretendard | 1.20 | 100% | 0 | Slate | Units beside a key number |
-| `subtitle` | 14pt | Medium | 1.20 | 100% | 0 | Slate | Slide subtitle |
-| `chapter` | 11pt | Medium | 1.20 | 100% | 0.5pt | Steel | Chapter label |
-| `body` | 13pt | Pretendard | 1.35-1.50 | 115-125% | 0 | Charcoal | Default body text |
-| `body-sm` | 11pt | Pretendard | 1.35-1.50 | 115-125% | 0 | Charcoal | Dense body and table cells |
-| `caption` | 10pt | Pretendard | 1.40 | 115% | 0 | Steel | Chart labels and notes |
-| `footer` | 9pt | Pretendard | 1.20 | 100% | 0 | Steel | Source and page number |
+| `cover-title` | 42pt | SemiBold | 1.07 | 90% | -0.3pt | Ink | Cover slide title |
+| `divider-title` | 30pt | SemiBold | 1.10 | 92% | -0.3pt | Ink | Section divider title |
+| `slide-title` | 30pt | SemiBold | 1.20 | 100% | -0.3pt | Ink | Slide title |
+| `card-heading` | 16pt | SemiBold | 1.20 | 100% | -0.2pt | Ink | Card and block headings |
+| `metric` | 24pt | SemiBold | 1.20 | 100% | -0.3pt | Ink | Key numbers |
+| `metric-unit` | 12pt | Pretendard | 1.20 | 100% | 0 | Ink Muted | Units beside a key number |
+| `subtitle` | 14pt | Pretendard | 1.20 | 100% | 0 | Ink Muted | Slide subtitle |
+| `chapter` | 11pt | Pretendard | 1.20 | 100% | 0 | Ink Muted | Chapter label |
+| `body` | 13pt | Pretendard | 1.47 | 123% | -0.2pt | Ink Muted | Default body text |
+| `body-sm` | 11pt | Pretendard | 1.47 | 123% | 0 | Ink Muted | Dense body and table cells |
+| `caption` | 10pt | Pretendard | 1.43 | 120% | 0 | Ink Muted | Metric labels, chart labels, notes |
+| `footer` | 9pt | Pretendard | 1.20 | 100% | 0 | Fine Print | Source and page number |
 
 **Minimum sizes:** 11pt for body text, 10pt for captions and chart labels, 9pt for the footer only.
 
 ### Principles
-- Use one family with weight discipline: 400 for body, 500 for labels, 600 for headings, 700 for short emphasis.
-- Keep the negative tracking and tight leading on display sizes. They create the editorial look.
+- Use tight negative tracking on sizes of 13pt and up. Never use it at 11pt or below.
+- Do not tighten body line height below 1.47.
+- Use 600, not 700, for headlines.
 - Keep key numbers small enough that they support the content. Do not raise `metric` above 24pt.
 - Left-align all text except numbers in table columns, which are right-aligned.
 
@@ -156,53 +133,43 @@ Other Pretendard weights are not part of this system. Do not use them unless the
 
 | Token | Value | Use |
 |---|---|---|
-| `radius-sm` | 4.5 pt | Table containers and code blocks |
-| `radius-md` | 12 pt | `card`, `card-soft`, `metric` cards |
-| `radius-hero` | 24 pt | `identity-card` and `card-dark` |
-| `radius-full` | Full height | `chip` and all badges |
+| `radius-lg` | 13.5 pt | `card`, `card-soft`, `tile-soft` |
+| `radius-pill` | Full height | `tag` only |
 
-- Pair `radius-hero` identity cards with `radius-md` white cards on the same slide. The radius contrast is the visual signature.
-- Keep slides flat. A 1 pt `hairline` border carries separation. Do not use shadows, glows, or gradients.
+- Use no other radius.
+- Keep slides flat. Do not use shadows, glows, or gradients on anything.
+- A change of surface is the first way to separate blocks. Add a 1 pt `hairline` border only on white cards and table rows.
 
 ## Components
 
-**`card`**: fill `#ffffff`, 1 pt `hairline` border, `radius-md`, 16 pt padding. Holds a `card-heading` and `body` or `body-sm` text.
+**`card`**: fill `#ffffff`, 1 pt `hairline` border, `radius-lg`, 16 pt padding. Holds a `card-heading` and `body` or `body-sm` text.
 
-**`card-soft`**: same as `card` with `#f7f8fa` fill and no border. Use for quieter supporting content.
+**`card-soft`**: fill `#f5f5f7`, no border, `radius-lg`, 16 pt padding. Use for quieter supporting content.
 
-**`identity-card`**: solid identity color fill, `On Dark` text, `radius-hero`, 24 pt padding, no border. Holds a large statement or topic name in `card-heading` size or larger. Use for the one thing the slide is about.
-
-**`card-dark`**: fill `#0a0a0a`, `On Dark` text, `radius-hero`, 24 pt padding. Use for a closing statement or takeaway.
+**`tile-soft`**: fill `#e8e8ed`, Ink and Ink Muted text, `radius-lg`, 24 pt padding, no border. Do not use near-black fills on slides, because they feel heavy on a white canvas. Use for the one thing a slide or row is about. Do not use more than three per slide.
 
 **`stat-row`**: 3 or 4 equal `card`s in one row, 76 pt tall, each with a `metric` number and optional `metric-unit` above a `caption` label.
 
-**`takeaway-card`**: full-width `card-soft` or `card-dark` at the bottom of the body zone, one or two lines of `body` text.
+**`takeaway-card`**: full-width `card-soft` or `tile-soft` at the bottom of the body zone, one or two lines of `body` text.
 
-**`chip`**: full pill shape, `caption` size in `Pretendard Medium`, 4 pt vertical and 10 pt horizontal padding. Primary is `#0a0a0a` fill with white text, at most one per slide. Secondary is transparent fill with 1 pt `#0a0a0a` border and Ink text. Tertiary is white fill with 1 pt `hairline` border and Ink text.
+**`tag`**: full pill shape, fill `#f5f5f7`, `Pretendard SemiBold` 10pt Ink text. Use it to name a company, product, or topic. All tags look the same.
 
-**`badge-identity`**: identity color fill, white `Pretendard SemiBold` 10pt text, full pill shape. Use it to tag a topic on a white card.
+**`table`**: header row with `#f5f5f7` fill and `Pretendard SemiBold` 11pt Ink Muted text, `body-sm` cells, 1 pt `hairline` row lines, no vertical lines, no zebra stripes. Stretch row heights so the table ends in the allowed density range.
 
-**`badge-info`**: `#bfdbfe` fill, `#1d4ed8` `Pretendard SemiBold` 10pt text, full pill shape.
+**`chart`**: transparent background, `hairline` gridlines, `caption` labels, black and gray series, Blue for the one highlighted series. No 3D effects or chart shadows.
 
-**`badge-success`**: `#e8ffea` fill, `#1ba673` `Pretendard SemiBold` 10pt text, full pill shape.
+**`code-block`**: fill `#f5f5f7`, `radius-lg`, 12 pt padding, `body-sm` text in Pretendard.
 
-**`table`**: header row with `#f7f8fa` fill and `Pretendard SemiBold` 11pt Steel text, `body-sm` cells, 1 pt `hairline-soft` row lines, no vertical lines, no zebra stripes. Stretch row heights so the table ends in the allowed density range.
-
-**`chart`**: transparent background, `hairline` gridlines, `caption` labels, black and gray series, one identity color for the highlighted series. No 3D effects or chart shadows.
-
-**`code-block`**: fill `#f2f3f5`, `radius-sm`, 12 pt padding, `body-sm` text in Pretendard.
-
-**`diagram`**: `card`-style nodes with 1 pt straight connectors in `#5f5f5f`, on the canvas or a `card-soft` panel.
+**`diagram`**: `card`-style nodes with 1 pt straight connectors in `#333333`, on the canvas or a `card-soft` panel.
 
 ## Slide Patterns
 
 Each pattern uses the fixed header and footer, and changes only the body zone.
 
 - **Cover:** `cover-title` and `subtitle`, left aligned, with date or author in `caption` on the footer line.
-- **Section divider:** `divider-title`, a `badge-identity` for the chapter, and a short list of the chapter's topics, left aligned.
-- **Identity + detail:** `identity-card` across 4 columns, 2 or 3 stacked `card`s across 8 columns.
+- **Section divider:** `divider-title`, a `tag` for the chapter, and a short list of the chapter's topics, left aligned.
+- **Tile + detail:** `tile-soft` across 4 columns, 2 or 3 stacked `card`s across 8 columns.
 - **Metrics + detail:** `stat-row` on top, 2-up or 3-up `card`s below, ending at y 498.
-- **Matrix:** 3-up or 4-up `identity-card`s of equal height, one per topic, with a `takeaway-card` or `table` below.
 - **Compare:** 2-up `card`s of equal height, with a `takeaway-card` below.
 - **Table + insight:** `table` across 8 columns, `card` with the interpretation across 4 columns.
 - **Chart + insight:** `chart` across 8 columns, 2 or 3 stacked `card`s across 4 columns.
@@ -213,14 +180,13 @@ Each pattern uses the fixed header and footer, and changes only the body zone.
 ### Do
 - Use `#ffffff` as the background of every slide.
 - Reuse the same master for every slide, so that flipping through the deck shows no header movement.
-- Keep each topic on its assigned identity color for the whole deck.
 - Vary the body pattern to suit the content.
 - Check every slide before delivery: font names, header coordinates, title on one line, no overflow, and the lowest body element within y 474-498.
 
 ### Don't
 - Don't use any font other than Pretendard, or let any text fall back to a system font.
 - Don't add a logo, a dark slide background, shadows, gradients, or decorative imagery.
-- Don't use identity colors on body text, or use them only to decorate.
-- Don't use sharp-cornered or partly rounded chips and badges. They are always full pills.
+- Don't use any color other than Blue as an accent, or use Blue on large surfaces.
+- Don't mix radii. Cards are `radius-lg` and tags are pills.
 - Don't center titles or body text.
 - Don't invent content to reach the density target.
