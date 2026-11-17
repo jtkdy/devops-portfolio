@@ -1,8 +1,8 @@
 ---
 title: EKS 관리형 노드그룹 최적화 및 업그레이드
 date: 2025-04-01
-updated: 2026-10-23
-tags: [제주항공, eks, kubecost, terraform, cost-optimization]
+updated: 2026-11-17
+tags: [제주항공, eks, kubecost, cost-optimization]
 status: draft
 ---
 ## 배경
@@ -14,7 +14,7 @@ status: draft
 ## 접근
 
 Kubecost 및 k9s로 시스템별 리소스 사용률을 정밀 분석해서 노드그룹 통합을 통한 비용 절감 로드맵을 선제적으로 제안 → 노드그룹 19개를 5개로 축소
-수동 운영 방식을 탈피하기 위해 Terraform 및 YAML 기반의 코드로 인프라를 정의, 배포 속도를 높이고 버전 관리가 가능한 환경으로 설계
+워크로드는 YAML 매니페스트로 관리, 노드그룹 등 AWS 리소스의 Terraform 코드화까지는 가지 않음
 오토스케일링 방식은 비용·확장 속도 측면에서 유리하다고 보고 Karpenter 도입을 직접 제안했다가 철수, 일반 ASG(Cluster Autoscaler) 유지로 결정
 제주항공 이벤트는 제한된 수량을 구매하려는 트래픽이 짧은 시간 동안 폭주하는 패턴이라, 노드를 작게 유지하다 빠르게 스케일하는 비용 최적화보다 Replica Set을 사전에 넉넉히 확보해 서비스 안정성을 우선하는 쪽이 낫다고 회의를 거쳐 결론, 비용 일부 포기
 
@@ -72,7 +72,7 @@ Kubecost, kube-prometheus-stack, kube-state-metrics, Robusta(KRR)를 리소스 �
 비용 절감과 동시에 매니징 포인트 대폭 감소, 운영 부담 완화 체감
 
 다만 정리 과정에서 불필요한 보안그룹이 예상보다 많이 발견되어 그간의 리소스 관리 소홀 확인
-Terraform 코드 작성도 일정에 쫓겨 중복 리소스가 다수 발생, 추후 리팩토링 필요성 남음
+콘솔 수동 생성 리소스를 Terraform으로 옮기지 못한 채 마무리, IaC 전환은 과제로 남음
 
 이때 SG를 노드그룹 단위로 들여다보면서, SG 경계가 서비스(업무) 경계와 별개로 노드그룹 단위로 공유 운영되고 있다는 걸 확인
 
