@@ -90,6 +90,13 @@ status: draft
   2. 기존 WAR 백업(2일 보관) 후 새 WAR 원격 전달
   3. LENA stop, start
 - 접근 권한: Jenkins 접속은 PM/PL만, GitLab, Jenkins 로그인은 AD 계정
+- 이벤트 대비 사전 증설
+  - HPA(min 20, max 60, CPU 40%)가 걸려 있었지만 실제 자동 확장은 드묾
+  - 짧은 시간 몰리는 이벤트 트래픽은 자동 확장을 기다릴 수 없어 이벤트 전 HPA min 상향으로 파드 사전 증설
+  - 증설 규모는 JMeter 부하 테스트 결과로 결정 (이벤트별 min 값, 테스트 수치는 기록 없음)
+  - Deployment에 replicas를 두지 않는 이유: 두면 배포마다 파드 수가 그 값으로 되돌아감
+- 배포 단위 분리 (2025.02): 업무별 namespace로 Ingress 분리, `group.name`(여러 Ingress가 ALB 하나를 공유하게 묶는 설정)으로 ALB 수는 유지
+- 업무별 ECR Repository, 배포 정책 구성은 구성정의서로 정리 ([[07-PSS 시스템 아키텍처]])
 
 ### 장애 대응
 
@@ -134,4 +141,5 @@ status: draft
 - [[01-차세대 PSS 프로젝트 EKS 전환]]
 - [[02-미들웨어 플랫폼 전환 (JEUS to LENA)]]
 - [[03-EKS 관리형 노드그룹 최적화]]
+- [[07-PSS 시스템 아키텍처]]
 - [[10-서버 접근제어 체계 정비]]
