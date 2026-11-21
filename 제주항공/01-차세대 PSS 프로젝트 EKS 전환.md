@@ -1,7 +1,7 @@
 ---
 title: 제주항공 차세대 PSS 프로젝트 - Legacy to EKS
 date: 2021-12-01
-updated: 2026-10-22
+updated: 2026-11-21
 tags: [제주항공, eks, aws, migration, ci-cd]
 status: draft
 ---
@@ -23,7 +23,7 @@ status: draft
 - **트래픽 제어** — NLB/ALB를 통한 계층별 라우팅 분산 처리 및 안정적인 트래픽 분산
 - **ELK 통합 로그** — 애플리케이션 로그를 온프레미스 ELK 스택으로 중앙 집중화해서 통합 관제 (상세: [[15-통합로그 ELK 플랫폼 구축]])
 - **Amazon MQ 기반 동기화 체계** — 다국어 콘텐츠 캐시 갱신용 MQ와 고객 예약정보 동기화용 MQ, 두 개로 분리 운영. 각 노드의 분산 캐시 시스템을 즉시 동기화하는 실시간 이벤트를 전파해 데이터 불일치 문제 해결 및 DB 부하 경감
-- **CI/CD (Jenkins)** — Jenkinsfile 기반 파이프라인으로 Deployment 배포 및 replica 수 조정
+- **CI/CD (GitLab, Nexus, Jenkins)** — Jenkins 잡(Execute Shell 스크립트)으로 Maven 빌드, 이미지 빌드, ECR push, 매니페스트 생성 후 Deployment 배포 (상세: [[16-CI-CD 파이프라인 운영]])
 
 ## 결과
 
