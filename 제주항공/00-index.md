@@ -26,6 +26,7 @@ AK아이에스 소속으로 제주항공 인프라를 운영하며 수행한 프
 | 13 | [[13-합산관리시스템 구축]] | 2023.12~2024.06 | SAP-통합정산시스템 대용량 전표 관리용 신규 시스템 구축(Nutanix HCI), HP-UX SAP 클라우드 이관 지원 |
 | 14 | [[14-E-HR 시스템 도입]] | 2024.08~ | 신규 E-HR 시스템 도입, LENA WEB/WAS 구성, MCCS 기반 DB 이중화 |
 | 15 | [[15-통합로그 ELK 플랫폼 구축]] | 2021.12 | 항공 예약 시스템 로그 일 300-400GB 수집, Elasticsearch Hot-Warm-Cold 구성(물리 12대 + Kibana VM 2대), 스냅샷 NetWorker 백업 |
+| 16 | [[16-CI-CD 파이프라인 운영]] | 2021.07~2025.06 | GitLab, Nexus, Jenkins 기반 빌드, 배포 파이프라인 운영, Maven WAR → LENA 베이스 이미지 → ECR → 템플릿 매니페스트로 EKS 롤링 배포 |
 
 ## 관련 문서
 - [[TelePIX/00-index|TelePIX 인덱스]]
