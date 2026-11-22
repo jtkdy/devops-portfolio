@@ -67,6 +67,20 @@ status: draft
 - 태그: `<업무>-was-날짜시간` (서비스명 `<업무>-was` + 빌드 시각)
 - 매니페스트: 공통 템플릿에 이미지 태그, 노드 라벨, 서비스명 치환
 - 파일 구성: 서비스 매니페스트 한 파일에 Deployment, ConfigMap, Service, HPA를 `---`로 구분해 함께 선언, Ingress는 업무별 별도 파일로 관리
+
+| 리소스 | 담는 내용 |
+|---|---|
+| Deployment | 이미지(ECR 주소 + 태그), 롤링 전략, 노드그룹 affinity, resources, 프로브, preStop, 종료 유예, ConfigMap 환경변수 연결 (replicas 없음) |
+| ConfigMap | WAS 환경변수 |
+| Service | 파드 앞 내부 진입점 |
+| HPA | 파드 수 범위와 CPU 목표치 (홈페이지 WAS min 20, max 60, CPU 40%) |
+| Ingress (별도 파일) | AWS Load Balancer Controller가 ALB 생성, `group.name`으로 ALB 공유, `target-type: ip` |
+
+- 배포마다 바뀌는 값은 사실상 이미지 태그 한 줄, 나머지 파드 설정은 템플릿에 고정
+- apply 후 흐름
+  1. 이미지 태그 변경 감지 → 롤링 시작
+  2. 노드가 노드 IAM Role로 ECR에서 이미지 pull
+  3. 새 파드 readiness 통과 후 기존 파드가 preStop 순서로 종료
 - 템플릿 배포 설정
   - 롤링: `maxUnavailable: 0`(교체 중 기존 파드 감소 없음), `maxSurge: 10%`(새 파드 추가 비율)
   - 종료 순서 (preStop: 컨테이너 종료 직전 실행 훅)
@@ -86,10 +100,12 @@ status: draft
   2. 스크립트의 베이스 이미지 지정 수정
   3. Jenkins 빌드, 배포
   4. 서비스 확인
-- 온프렘 VM 업무(LENA on Nutanix)
-  1. Maven 빌드
-  2. 기존 WAR 백업(2일 보관) 후 새 WAR 원격 전달
-  3. LENA stop, start
+- 온프렘 VM 업무(LENA on Nutanix): 이미지, ECR 없이 WAR 직접 배포
+  1. Maven 빌드 (EKS와 동일)
+  2. Jenkins가 SSH로 WAR 전송 (Jenkins 시스템 설정에 SSH 키 등록, 대상 서버 `authorized_keys`, `hosts.allow`에 Jenkins 허용)
+  3. 대상 서버에서 기존 WAR를 날짜시간 붙여 백업, 2일 지난 백업 삭제
+  4. LENA WAS stop, start 후 프로세스 확인 (재기동 동안 해당 인스턴스 중단)
+  5. 롤백: 백업 WAR로 교체 후 재기동
 - 접근 권한: Jenkins 접속은 PM/PL만, GitLab, Jenkins 로그인은 AD 계정
 - 이벤트 대비 사전 증설
   - HPA(min 20, max 60, CPU 40%)가 걸려 있었지만 실제 자동 확장은 드묾
