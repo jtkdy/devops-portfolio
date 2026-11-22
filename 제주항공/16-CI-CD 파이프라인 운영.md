@@ -44,7 +44,7 @@ status: draft
 1. 개발자 브랜치 push → GitLab Merge Request 리뷰 후 병합 (Developer는 master push 불가, Maintainer만 병합)
 2. Jenkins가 GitLab에서 소스 pull (개발 `develop`, 운영 `master`)
 3. Maven 빌드(`clean install` 또는 `clean package`) → WAR 생성, 라이브러리는 Nexus에서 수신
-4. 이미지, 매니페스트 단계 (매뉴얼의 Execute Shell 스크립트 기준 5단계, Jenkinsfile 잡도 같은 흐름)
+4. Execute Shell 스크립트 5단계
    1. WAR를 Docker 빌드 디렉토리로 복사 (이전 파일 삭제 후)
    2. ECR 로그인 (`aws ecr get-login-password`)
    3. Dockerfile 생성: `FROM <LENA WAS 베이스 이미지>` + `ADD <war>`
@@ -90,9 +90,7 @@ status: draft
     4. 전체 유예 `terminationGracePeriodSeconds: 240` 초과 시 강제 종료
   - `revisionHistoryLimit: 1`(보관 이전 버전 수)
   - Deployment에 replicas 없이 HPA(CPU 기준 파드 수 자동 조절)로 운영
-- 잡 형태: 두 방식 병행
-  - UI 구성 잡 + Execute Shell 스크립트 (2021.11 전환 매뉴얼에 기록된 방식)
-  - Jenkinsfile 기반 파이프라인 (운영 중 서버에서 확인, 사용자 기억, 적용 업무 범위는 기록 없음)
+- 잡 형태: Jenkinsfile이 아닌 UI 구성 잡(Freestyle, Maven 프로젝트) + Execute Shell로 서버 셸 스크립트 호출 (2018 Jenkins 가이드, 2021.11 전환 매뉴얼 근거, Jenkinsfile 사용 흔적은 업무 자료에 없음)
 - 잡 구성: 서버의 스크립트 디렉토리(개발 `D_`, 운영 `P_` 접두사)를 기존 잡에서 복사 후 서비스명, 경로 수정
 
 ### 운영 절차
@@ -153,7 +151,7 @@ status: draft
 - Jenkins는 빌드, 태그 커밋까지만 하고 반영은 클러스터 안 GitOps 도구로 넘겨 클러스터 쓰기 권한 회수
 - 장기 키 대신 임시 자격증명 (IAM Roles Anywhere: 온프렘 서버가 인증서로 IAM Role 임시 자격증명 발급)
 - 커밋 해시 포함 이미지 태그, 베이스 이미지는 버전 태그로 유지
-- 스크립트 잡과 Jenkinsfile 잡이 섞인 상태를 Jenkinsfile + 공유 라이브러리 하나로 통일
+- 서버에 흩어진 잡 스크립트를 Jenkinsfile + 공유 라이브러리로 옮겨 레포에서 관리
 
 ## 관련 문서
 - [[00-index|제주항공 인덱스]]
