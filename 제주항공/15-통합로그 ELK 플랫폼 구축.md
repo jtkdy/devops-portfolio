@@ -1,7 +1,7 @@
 ---
 title: 통합로그 ELK 플랫폼 구축
 date: 2026-10-22
-updated: 2026-10-22
+updated: 2026-11-22
 tags: [제주항공, elk, elasticsearch, logstash, filebeat, kibana, logging]
 status: draft
 ---
@@ -20,7 +20,7 @@ Hot-Warm-Cold: 최근 로그는 고성능 노드(Hot), 시간이 지난 로그�
 Hot 노드 6대, Warm·Cold 노드 2대씩 배치
 수집·저장 계층은 물리 서버, 조회 계층은 가상화 VM으로 분리
 Kibana: Elasticsearch 데이터를 검색·시각화하는 웹 UI
-담당자 1명과 공동, 2021.12 무렵 구축
+담당자 1명과 공동, 2021.12 무렵 구축, 이후 운영까지 함께 담당
 
 ## 구현
 
@@ -43,6 +43,15 @@ Kibana: Elasticsearch 데이터를 검색·시각화하는 웹 UI
 2. Logstash(로그 파싱·변환 서버)에서 파싱 후 Elasticsearch Hot 노드에 적재
 3. 기간 경과에 따라 Warm, Cold 노드로 이동
 4. Kibana 2대에서 조회
+
+### Logstash 파이프라인 운영
+
+구축 후 Logstash 파이프라인(conf) 작성·수정까지 직접 담당, 온프렘 클러스터 기준으로 운영
+- **EKS 로그 메타데이터 추출**: 로그 파일 경로를 분해해 deployment, 노드, pod 이름 필드 생성
+- **필드 정규화**: 업무 시스템마다 다른 헤더 키(거래 ID, 예약번호, 에러 코드, 채널 등)를 공통 필드로 매핑 → 업무가 달라도 같은 필드로 조회
+- **시간 기준 통일**: 로그 본문 타임스탬프로 `@timestamp` 재설정, JSON 파싱 실패 시 원문 보존
+- **인덱스 분리**: 서비스(WAS)별 일자 인덱스로 적재
+- 이후 Amazon OpenSearch 전환 시도(같은 구조 파이프라인 + S3 아카이브 출력), 전환 완료 여부 기록 없음
 
 ### 계층 이동 기준
 
