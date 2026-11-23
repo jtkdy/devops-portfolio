@@ -51,7 +51,7 @@ status: draft
    4. `docker build`, `docker push`, 공통 base 매니페스트를 `envsubst`(환경변수 값을 템플릿 자리에 채우는 리눅스 유틸)로 치환해 서비스별 yaml 생성
    5. (개발만) 생성 yaml을 매니페스트 레포에 push
 5. EKS 반영
-   - 운영: Jenkins가 만든 매니페스트로 `kubectl apply` (운영 기간 기억 기준, [[03-EKS 관리형 노드그룹 최적화]]와 동일), 2021.11 매뉴얼엔 Bastion 경유로 표기, kubectl 실행 호스트 세부는 기록 없음
+   - 운영: Jenkins 잡 스크립트 마지막 단계에서 `envsubst`로 만든 매니페스트를 `kubectl apply` (사용자 확인, [[03-EKS 관리형 노드그룹 최적화]]와 동일), 2021.11 매뉴얼은 전환 시점 개발계 스크립트 위주라 apply 단계가 없고 운영계는 Bastion 경유로만 표기
    - 개발: 매뉴얼상 매니페스트 레포 push 후 ArgoCD(Git의 매니페스트를 클러스터에 자동 반영하는 GitOps 도구) sync 경로 존재, 직접 다룬 기억 없음
 
 ```text
